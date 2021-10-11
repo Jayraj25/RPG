@@ -9,21 +9,21 @@ public class WeaponFactory {
    * @param weaponType the weapon type that needs to be created
    * @return new created weapon
    */
-  public Weapon createWeapon(String weaponType, SwordTypes weaponSubType) {
-    if (weaponType.equals("Axes")) {
+  public Weapon createWeapon(String weaponType) {
+    if (weaponType.equalsIgnoreCase("Axe")) {
       return new Axes();
     }
-    else if (weaponType.equals("Flails")) {
+    else if (weaponType.equalsIgnoreCase("Flail")) {
       return new Flails();
     }
-    else if (weaponType.equals("Swords") && weaponSubType.toString().equals("Katanas")) {
-      return new Swords(weaponSubType);
+    else if (weaponType.equalsIgnoreCase("Katana")) {
+      return new Katanas();
     }
-    else if (weaponType.equals("Swords") && weaponSubType.toString().equals("Broad Swords")) {
-      return new Swords(weaponSubType);
+    else if (weaponType.equalsIgnoreCase("Broad Sword")) {
+      return new BroadSwords();
     }
-    else if (weaponType.equals("Swords") && weaponSubType.toString().equals("Two Handed Swords")) {
-      return new Swords(weaponSubType);
+    else if (weaponType.equalsIgnoreCase("Two Handed Sword")) {
+      return new TwoHandedSwords();
     }
     return null;
   }

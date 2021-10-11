@@ -1,10 +1,8 @@
 package player;
 
-import numbergenerator.RandomGenerator;
+import numbergenerator.GenerateRandomNumber;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Creates the player for the battle.
@@ -16,13 +14,13 @@ public class Player {
   private int constitution;
   private int dexterity;
   private int charisma;
-  private final RandomGenerator g;
+  private final GenerateRandomNumber g;
 
   /**
    * Constructs a player.
    * @param g the type of random generator to be used
    * */
-  public Player(int ID, RandomGenerator g) {
+  public Player(int ID, GenerateRandomNumber g) {
     this.playerID = ID;
     this.g = g;
   }
@@ -66,10 +64,10 @@ public class Player {
     this.charisma = charisma;
   }
 
-  private int rollDice(RandomGenerator g) {
-    int temp = g.getNumber(1,6);
+  private int rollDice(GenerateRandomNumber g) {
+    int temp = g.getRandomNumber(1,6);
     while (temp < 2) {
-      temp = g.getNumber(1,6);
+      temp = g.getRandomNumber(1,6);
     }
     return temp;
   }

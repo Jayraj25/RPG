@@ -3,17 +3,18 @@ package weapon;
 import numbergenerator.GenerateRandomNumber;
 
 /**
- * Class that helps in getting damage caused by axes.
+ * Abstract class for sword which is in turn extended by Katanas, Two handed and
+ * broad swords type respectively.
  * */
-public class Axes implements Weapon {
+public class AbstractSword implements Weapon {
 
   @Override
   public int getWeaponDamage(GenerateRandomNumber g) {
-    return g.getRandomNumber(6,10);
+    return 0;
   }
 
   @Override
   public String getTypeOfWeapon() {
-    return "Axe";
+    return null;
   }
 }

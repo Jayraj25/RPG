@@ -1,6 +1,6 @@
 package weapon;
 
-import numbergenerator.RandomGenerator;
+import numbergenerator.GenerateRandomNumber;
 
 /**
  * Class that helps in getting damage caused by flails.
@@ -8,7 +8,12 @@ import numbergenerator.RandomGenerator;
 public class Flails implements Weapon {
 
   @Override
-  public int getWeaponDamage(RandomGenerator g) {
-    return g.getNumber(8,12);
+  public int getWeaponDamage(GenerateRandomNumber g) {
+    return g.getRandomNumber(8,12);
+  }
+
+  @Override
+  public String getTypeOfWeapon() {
+    return "Flail";
   }
 }

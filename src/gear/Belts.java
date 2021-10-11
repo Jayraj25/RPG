@@ -1,8 +1,7 @@
 package gear;
 
 
-import numbergenerator.RandomGenerator;
-import numbergenerator.UnknownRandomGenerator;
+import numbergenerator.GenerateRandomNumber;
 import player.Player;
 
 import java.util.HashMap;
@@ -34,19 +33,19 @@ public class Belts implements Gear {
       int tmp = beltsTrack.get(BeltTypes.MEDIUM) + 1;
       beltsTrack.put(BeltTypes.MEDIUM,tmp);
     }
-    else if (num == 3) {
+    else if (num == 4) {
       int tmp = beltsTrack.get(BeltTypes.LARGE) + 1;
       beltsTrack.put(BeltTypes.LARGE,tmp);
     }
   }
 
   private void generateBelts() {
-    RandomGenerator g = new UnknownRandomGenerator();
+    GenerateRandomNumber g = new GenerateRandomNumber();
     int sum = 0;
     while (sum < 10) {
-      int temp = g.getNumber(1, 4);
+      int temp = g.getRandomNumber(1, 4);
       while (temp == 3) {
-        temp = g.getNumber(1, 4);
+        temp = g.getRandomNumber(1, 4);
       }
       assignBelts(temp);
       sum += temp;
@@ -62,6 +61,6 @@ public class Belts implements Gear {
       totalAffect += b.getKey().getValue() * b.getValue();
     }
     p.setConstitution(p.getConstitution() + (3 * totalAffect));
-    p.setDexterity(p.getDexterity() - (2 * totalAffect));
+    p.setDexterity(p.getDexterity() - (totalAffect));
   }
 }

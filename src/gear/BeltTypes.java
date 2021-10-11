@@ -7,9 +7,19 @@ package gear;
  * {@link #LARGE}
  * */
 public enum BeltTypes {
-  SMALL,
-  MEDIUM,
-  LARGE;
+  SMALL(1),
+  MEDIUM(2),
+  LARGE(4);
+
+  private int value;
+
+  BeltTypes(int value) {
+    this.value = value;
+  }
+
+  public int getValue() {
+    return this.value;
+  }
 
   @Override
   public String toString() {

@@ -11,16 +11,16 @@ public class GearFactory {
    */
   public Gear createGears(String gearType) {
     if (gearType.equalsIgnoreCase("headgear")) {
-      new HeadGear();
+      return new HeadGear();
     }
     else if (gearType.equalsIgnoreCase("Footwear")) {
-      new FootWear();
+      return new FootWear();
     }
     else if (gearType.equalsIgnoreCase("Belts")) {
-      new Belts();
+      return new Belts();
     }
     else if (gearType.equalsIgnoreCase("Potion")) {
-      new Potions();
+      return new Potions();
     }
     return null;
   }

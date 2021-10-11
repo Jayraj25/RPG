@@ -1,3 +1,6 @@
+import gear.Gear;
+import gear.GearFactory;
+import gear.HeadGear;
 import numbergenerator.PredictableRandomGenerator;
 import numbergenerator.RandomGenerator;
 import numbergenerator.UnknownRandomGenerator;
@@ -24,6 +27,15 @@ public class Driver {
 
     Player p1 = new Player(1,rg1);
     p1.setProperties();
+    System.out.println(p1.toString());
+
+    GearFactory gf = new GearFactory();
+    Gear hg = gf.createGears("headgear");
+    hg.mountGear(p1);
+    System.out.println(p1.toString());
+
+    Gear belt = gf.createGears("belts");
+    belt.mountGear(p1);
     System.out.println(p1.toString());
   }
 }

@@ -1,3 +1,7 @@
+import java.util.List;
+
+import battleground.BagOfEquipments;
+import gear.BeltTypes;
 import gear.Gear;
 import gear.GearFactory;
 import numbergenerator.GenerateRandomNumber;
@@ -11,8 +15,9 @@ import weapon.WeaponFactory;
 public class Driver {
   /**
    * The main method for driver class.
-   * @param args Command line arguments*/
-  public static void main(String[] args) {
+   * @param args Command line arguments
+   * */
+  public static void main(String[] args) throws IllegalAccessException {
 
     GenerateRandomNumber r = new GenerateRandomNumber();
 
@@ -27,16 +32,23 @@ public class Driver {
     System.out.println(p1);
 
     GearFactory gf = new GearFactory();
-    Gear hg = gf.createGears("headgear");
+    Gear hg = gf.createGears("HG1","headgear");
     hg.mountGear(p1);
     System.out.println(p1);
 
-    Gear belt = gf.createGears("belts");
+    Gear belt = gf.createGears("B1","belt");
     belt.mountGear(p1);
     System.out.println(p1);
 
-    Gear potion = gf.createGears("Potion");
+    Gear potion = gf.createGears("P1","Potion");
     potion.mountGear(p1);
+    System.out.println(potion.toString());
     System.out.println(p1);
+
+    BagOfEquipments bag = new BagOfEquipments();
+    List<Gear> equipments = bag.getEquipments();
+    System.out.println(bag.toString());
+    Gear x = equipments.get(16);
+//    System.out.println(x.getBeltType());
   }
 }

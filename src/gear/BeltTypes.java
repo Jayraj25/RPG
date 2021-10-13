@@ -11,7 +11,7 @@ public enum BeltTypes {
   MEDIUM(2),
   LARGE(4);
 
-  private int value;
+  private final int value;
 
   BeltTypes(int value) {
     this.value = value;

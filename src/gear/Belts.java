@@ -11,32 +11,44 @@ import java.util.Map;
  * Creates the Belts gear and Helps in getting how much
  * it affects a player's ability. It affects player's dexterity and constitution ability.
  */
-public class Belts implements Gear {
+public class Belts extends AbstractGear {
 
   Map<BeltTypes, Integer> beltsTrack = new HashMap<>();
+  GenerateRandomNumber g = new GenerateRandomNumber();
+  private BeltTypes size;
+  private final int beltUnit;
 
   /**
    * Constructs belts as gear.
+   * @param gearName the name assigned to this gear
    * */
-  public Belts() {
-    for (BeltTypes b: BeltTypes.values()) {
-      beltsTrack.put(b,0);
+  public Belts(String gearName) {
+    super(gearName);
+    int temp = g.getRandomNumber(1, 4);
+    while (temp == 3) {
+      temp = g.getRandomNumber(1, 4);
     }
+    assignBelts(temp);
+    beltUnit = temp;
   }
 
   private void assignBelts(int num) {
     if (num == 1) {
-      int tmp = beltsTrack.get(BeltTypes.SMALL) + 1;
-      beltsTrack.put(BeltTypes.SMALL,tmp);
+      size = BeltTypes.SMALL;
+//      int tmp = beltsTrack.get(BeltTypes.SMALL) + 1;
+//      beltsTrack.put(BeltTypes.SMALL,tmp);
     }
     else if (num == 2) {
-      int tmp = beltsTrack.get(BeltTypes.MEDIUM) + 1;
-      beltsTrack.put(BeltTypes.MEDIUM,tmp);
+      size = BeltTypes.MEDIUM;
+//      int tmp = beltsTrack.get(BeltTypes.MEDIUM) + 1;
+//      beltsTrack.put(BeltTypes.MEDIUM,tmp);
     }
     else if (num == 4) {
-      int tmp = beltsTrack.get(BeltTypes.LARGE) + 1;
-      beltsTrack.put(BeltTypes.LARGE,tmp);
+      size = BeltTypes.LARGE;
+//      int tmp = beltsTrack.get(BeltTypes.LARGE) + 1;
+//      beltsTrack.put(BeltTypes.LARGE,tmp);
     }
+    System.out.println("Belt size " + size);
   }
 
   private void generateBelts() {
@@ -62,5 +74,37 @@ public class Belts implements Gear {
     }
     p.setConstitution(p.getConstitution() + (3 * totalAffect));
     p.setDexterity(p.getDexterity() - (totalAffect));
+  }
+
+  @Override
+  public Map<String, Integer> getAffectOnPlayerAbility() {
+    temp.put("Constitution", 3);
+    temp.put("Dexterity", 1);
+    setFlag(true);
+    return temp;
+  }
+
+  @Override
+  public Map<String, Integer> getAbilityMap() {
+    if (getFlag()) {
+      return temp;
+    }
+    else {
+      Map<String, Integer> x = new HashMap<>();
+      x.put("Constitution", 3);
+      x.put("Dexterity", 1);
+      return x;
+    }
+//    return temp;
+  }
+
+  @Override
+  public BeltTypes getBeltType() {
+    return size;
+  }
+
+  @Override
+  public int getGearUnit() {
+    return beltUnit;
   }
 }

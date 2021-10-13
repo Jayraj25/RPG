@@ -9,18 +9,18 @@ public class GearFactory {
    * @param gearType the type of gear
    * @return the gear
    */
-  public Gear createGears(String gearType) {
+  public Gear createGears(String gearName, String gearType) {
     if (gearType.equalsIgnoreCase("headgear")) {
-      return new HeadGear();
+      return new HeadGear(gearName);
     }
     else if (gearType.equalsIgnoreCase("Footwear")) {
-      return new FootWear();
+      return new FootWear(gearName);
     }
-    else if (gearType.equalsIgnoreCase("Belts")) {
-      return new Belts();
+    else if (gearType.equalsIgnoreCase("Belt")) {
+      return new Belts(gearName);
     }
     else if (gearType.equalsIgnoreCase("Potion")) {
-      return new Potions();
+      return new Potions(gearName);
     }
     return null;
   }

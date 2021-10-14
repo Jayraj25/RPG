@@ -3,6 +3,7 @@ package gear;
 
 import numbergenerator.GenerateRandomNumber;
 import player.Player;
+import player.PlayerAbilities;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class Belts extends AbstractGear {
 
   Map<BeltTypes, Integer> beltsTrack = new HashMap<>();
-  GenerateRandomNumber g = new GenerateRandomNumber();
+  GenerateRandomNumber g = new GenerateRandomNumber(3);
   private BeltTypes size;
   private final int beltUnit;
 
@@ -30,6 +31,7 @@ public class Belts extends AbstractGear {
     }
     assignBelts(temp);
     beltUnit = temp;
+    gearCategory = GearCategory.BELT;
   }
 
   private void assignBelts(int num) {
@@ -48,7 +50,7 @@ public class Belts extends AbstractGear {
 //      int tmp = beltsTrack.get(BeltTypes.LARGE) + 1;
 //      beltsTrack.put(BeltTypes.LARGE,tmp);
     }
-    System.out.println("Belt size " + size);
+//    System.out.println("Belt size " + size);
   }
 
   private void generateBelts() {
@@ -77,25 +79,30 @@ public class Belts extends AbstractGear {
   }
 
   @Override
-  public Map<String, Integer> getAffectOnPlayerAbility() {
-    temp.put("Constitution", 3);
-    temp.put("Dexterity", 1);
+  public Map<PlayerAbilities, Integer> getAffectOnPlayerAbility() {
+    temp.put(PlayerAbilities.CONSTITUTION, 3);
+    temp.put(PlayerAbilities.DEXTERITY, 1);
     setFlag(true);
     return temp;
   }
 
   @Override
-  public Map<String, Integer> getAbilityMap() {
+  public Map<PlayerAbilities, Integer> getAbilityMap() {
     if (getFlag()) {
       return temp;
     }
     else {
-      Map<String, Integer> x = new HashMap<>();
-      x.put("Constitution", 3);
-      x.put("Dexterity", 1);
+      Map<PlayerAbilities, Integer> x = new HashMap<>();
+      x.put(PlayerAbilities.CONSTITUTION, 3);
+      x.put(PlayerAbilities.DEXTERITY, 1);
       return x;
     }
 //    return temp;
+  }
+
+  @Override
+  public GearCategory getGearCategory() {
+    return gearCategory;
   }
 
   @Override

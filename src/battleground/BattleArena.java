@@ -1,6 +1,9 @@
 package battleground;
 
+import gear.Gear;
 import player.Player;
+
+import java.util.List;
 
 /**
  * A place where the players will enter the ground and equip
@@ -8,21 +11,13 @@ import player.Player;
  * */
 public interface BattleArena {
 
-  void equipmentBag();
+  void battle();
 
-  int getPlayerHealth();
+  Player getWinner() throws IllegalAccessException;
 
-  int getStrikingPower();
+  void getTurn();
 
-  int getAvoidanceAbility();
-
-  int getPotentialStrikingDamage();
-
-  int actualDamage();
-
-  Player getWinner();
-
-  Player getTurn();
+  Player makeFirstMove();
 
   boolean isGameOver();
 

@@ -13,7 +13,7 @@ public class TwoHandedSwords extends AbstractSword {
   }
 
   @Override
-  public String getTypeOfWeapon() {
-    return "Two handed sword";
+  public WeaponTypes getTypeOfWeapon() {
+    return WeaponTypes.TWO_HANDED_SWORD;
   }
 }

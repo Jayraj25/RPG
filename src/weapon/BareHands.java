@@ -3,17 +3,16 @@ package weapon;
 import numbergenerator.GenerateRandomNumber;
 
 /**
- * Class that helps in getting damage caused by axes.
+ * If bare hands are used as weapon in the battle.
  * */
-public class Axes extends AbstractWeapon {
-
+public class BareHands extends AbstractWeapon {
   @Override
   public int getWeaponDamage(GenerateRandomNumber g) {
-    return g.getRandomNumber(6,10);
+    return g.getRandomNumber(0,5);
   }
 
   @Override
   public WeaponTypes getTypeOfWeapon() {
-    return WeaponTypes.AXE;
+    return WeaponTypes.BARE_HANDS;
   }
 }

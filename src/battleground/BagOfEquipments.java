@@ -1,8 +1,10 @@
 package battleground;
 
 import gear.Gear;
+import gear.GearCategory;
 import gear.GearFactory;
 import numbergenerator.GenerateRandomNumber;
+import player.PlayerAbilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class BagOfEquipments {
 
   List<Gear> equipments = new ArrayList<>();
   GearFactory gf = new GearFactory();
-  GenerateRandomNumber g = new GenerateRandomNumber();
+  GenerateRandomNumber g = new GenerateRandomNumber(3);
 
   private void generateEquipmentSet() {
 
@@ -24,22 +26,22 @@ public class BagOfEquipments {
     int count = 0;
     for (int i = 0; i < 7; i++) {
       temp = "HG" + (i + 1);
-      equipments.add(gf.createGears(temp,"headgear"));
+      equipments.add(gf.createGears(temp,GearCategory.HEADGEAR));
     }
 
     for (int i = 0; i < 7; i++) {
       temp = "FW" + (i + 1);
-      equipments.add(gf.createGears(temp,"footwear"));
+      equipments.add(gf.createGears(temp,GearCategory.FOOTWEAR));
     }
 
     for (int i = 0; i < 23; i++) {
       temp = "B" + (i + 1);
-      equipments.add(gf.createGears(temp,"belt"));
+      equipments.add(gf.createGears(temp,GearCategory.BELT));
     }
 
     for (int i = 0; i < 30; i++) {
       temp = "P" + (i + 1);
-      equipments.add(gf.createGears(temp,"Potion"));
+      equipments.add(gf.createGears(temp,GearCategory.POTION));
     }
   }
 
@@ -48,25 +50,26 @@ public class BagOfEquipments {
     while (count != (equipments.size() / 4)) {
       int tempGearIndex = g.getRandomNumber(0,equipments.size() - 1);
       Gear temp = equipments.get(tempGearIndex);
-      while (temp.getName().contains("HG") || temp.getName().contains("FW")) {
+      while (temp.getGearCategory().equals(GearCategory.HEADGEAR)
+              || temp.getGearCategory().equals(GearCategory.FOOTWEAR)) {
         tempGearIndex = g.getRandomNumber(0,equipments.size() - 1);
         temp = equipments.get(tempGearIndex);
       }
-      Map<String, Integer> w;
-      if (temp.getName().contains("B")) {
+      Map<PlayerAbilities, Integer> w;
+      if (temp.getGearCategory().equals(GearCategory.BELT)) {
         if (!temp.getFlag()) {
           w = temp.getAffectOnPlayerAbility();
-          int dexterity = w.get("Dexterity") * -1;
-          w.put("Dexterity",dexterity);
+          int dexterity = w.get(PlayerAbilities.DEXTERITY) * -1;
+          w.put(PlayerAbilities.DEXTERITY,dexterity);
           System.out.println("Inside B " + w);
           count++;
         }
       }
-      else if (temp.getName().contains("P")) {
+      else if (temp.getGearCategory().equals(GearCategory.POTION)) {
         if (!temp.getFlag()) {
           w = temp.getAffectOnPlayerAbility();
-          List<String> keysAsArray = new ArrayList<>(w.keySet());
-          String f = keysAsArray.get(g.getRandomNumber(0,keysAsArray.size() - 1));
+          List<PlayerAbilities> keysAsArray = new ArrayList<>(w.keySet());
+          PlayerAbilities f = keysAsArray.get(g.getRandomNumber(0,keysAsArray.size() - 1));
           if (w.get(f) != 0) {
             int affect = w.get(f) * -1;
             w.put(f,affect);

@@ -1,9 +1,9 @@
 package gear;
 
-import java.util.List;
-import java.util.Map;
-
 import player.Player;
+import player.PlayerAbilities;
+
+import java.util.Map;
 
 /**
  * Create different gears and get the affects of the gear on player's health.
@@ -20,13 +20,13 @@ public interface Gear {
    * Gets how much the player's ability is affected.
    * @return Ability mapped to its effect by a gear
    * */
-  Map<String, Integer> getAffectOnPlayerAbility();
+  Map<PlayerAbilities, Integer> getAffectOnPlayerAbility();
 
   /**
    * Gets the abilities map after updating.
    * @return Abilities mapped with effect
    * */
-  Map<String, Integer> getAbilityMap();
+  Map<PlayerAbilities, Integer> getAbilityMap();
 
   /**
    * Returns the flag indicator to check if the player's abilities are updated.
@@ -47,18 +47,17 @@ public interface Gear {
   String getName();
 
   /**
+   * Get what of gear it is (Belt, potion, headgear, footwear).
+   * @return gear category
+   * */
+  GearCategory getGearCategory();
+
+  /**
    * Gets the type of the belt constructed.
    * @return belt type
    * @throws IllegalAccessException if access is not allowed to that gear object
    */
   BeltTypes getBeltType() throws IllegalAccessException;
-
-  /**
-   * Gets the type of the potion created.
-   * @return potion type
-   * @throws IllegalAccessException if access is not allowed to that gear object
-   */
-  PotionTypes getPotionType() throws IllegalAccessException;
 
   /**
    * get the assigned units of that gear.

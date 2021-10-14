@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import player.Player;
+import player.PlayerAbilities;
 
 /**
  * Creates the headGear and Helps in getting how much
@@ -13,18 +14,24 @@ public class HeadGear extends AbstractGear {
 
   protected HeadGear(String gearName) {
     super(gearName);
+    gearCategory = GearCategory.HEADGEAR;
   }
 
   @Override
-  public Map<String, Integer> getAffectOnPlayerAbility() {
-    temp.put("Constitution", 5);
+  public Map<PlayerAbilities, Integer> getAffectOnPlayerAbility() {
+    temp.put(PlayerAbilities.CONSTITUTION, 5);
     return temp;
   }
 
   @Override
-  public Map<String, Integer> getAbilityMap() {
-    Map<String,Integer> x = getAffectOnPlayerAbility();
+  public Map<PlayerAbilities, Integer> getAbilityMap() {
+    Map<PlayerAbilities,Integer> x = getAffectOnPlayerAbility();
     return x;
+  }
+
+  @Override
+  public GearCategory getGearCategory() {
+    return gearCategory;
   }
 
   @Override

@@ -13,7 +13,7 @@ public class BroadSwords extends AbstractSword {
   }
 
   @Override
-  public String getTypeOfWeapon() {
-    return "Broad Sword";
+  public WeaponTypes getTypeOfWeapon() {
+    return WeaponTypes.BROADSWORD;
   }
 }

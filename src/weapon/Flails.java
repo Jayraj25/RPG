@@ -13,7 +13,7 @@ public class Flails implements Weapon {
   }
 
   @Override
-  public String getTypeOfWeapon() {
-    return "Flail";
+  public WeaponTypes getTypeOfWeapon() {
+    return WeaponTypes.FLAIL;
   }
 }

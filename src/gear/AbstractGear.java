@@ -1,14 +1,16 @@
 package gear;
 
+import player.Player;
+import player.PlayerAbilities;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import player.Player;
-
-public class AbstractGear implements Gear {
+abstract class AbstractGear implements Gear {
 
   protected final String gearName;
-  protected Map<String, Integer> temp = new HashMap<>();
+  protected Map<PlayerAbilities, Integer> temp = new HashMap<>();
+  protected GearCategory gearCategory;
 
   protected boolean flag = false;
 
@@ -21,12 +23,12 @@ public class AbstractGear implements Gear {
   }
 
   @Override
-  public Map<String, Integer> getAffectOnPlayerAbility() {
+  public Map<PlayerAbilities, Integer> getAffectOnPlayerAbility() {
     return null;
   }
 
   @Override
-  public Map<String, Integer> getAbilityMap() {
+  public Map<PlayerAbilities, Integer> getAbilityMap() {
     return temp;
   }
 
@@ -37,11 +39,6 @@ public class AbstractGear implements Gear {
 
   @Override
   public BeltTypes getBeltType() throws IllegalAccessException {
-    throw new IllegalAccessException("Access not allowed");
-  }
-
-  @Override
-  public PotionTypes getPotionType() throws IllegalAccessException {
     throw new IllegalAccessException("Access not allowed");
   }
 

@@ -17,5 +17,5 @@ public interface Weapon {
   /**
    * Get what type of weapon is created.
    * @return the type of weapon*/
-  String getTypeOfWeapon();
+  WeaponTypes getTypeOfWeapon();
 }

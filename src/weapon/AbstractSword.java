@@ -6,7 +6,7 @@ import numbergenerator.GenerateRandomNumber;
  * Abstract class for sword which is in turn extended by Katanas, Two handed and
  * broad swords type respectively.
  * */
-public class AbstractSword implements Weapon {
+abstract class AbstractSword implements Weapon {
 
   @Override
   public int getWeaponDamage(GenerateRandomNumber g) {
@@ -14,7 +14,7 @@ public class AbstractSword implements Weapon {
   }
 
   @Override
-  public String getTypeOfWeapon() {
+  public WeaponTypes getTypeOfWeapon() {
     return null;
   }
 }

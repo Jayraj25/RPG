@@ -3,8 +3,8 @@ package battleground;
 import gear.Gear;
 import gear.GearCategory;
 import numbergenerator.GenerateRandomNumber;
+import player.Player;
 import weapon.Weapon;
-import weapon.WeaponTypes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,8 @@ import java.util.Map;
  * */
 public class PlayerModel {
 
-  BagOfEquipments bag = new BagOfEquipments();
+  BagOfEquipments bag = new BagOfEquipments(7,7,
+          23,30);
   GenerateRandomNumber g = new GenerateRandomNumber(3);
 
   private Map<GearCategory,Integer> makeGearMap() {
@@ -29,9 +30,9 @@ public class PlayerModel {
 
   /**
    * Assign gears randomly to a player from bag of equipments.
-   * @return List of gears
+   * @param p The player
    * */
-  public List<Gear> equipGears() {
+  public void equipGears(Player p) {
     Map<GearCategory, Integer> gearMap = makeGearMap();
     List<Gear> gearList = bag.getEquipments();
     List<Gear> equippedGears = new ArrayList<>();
@@ -72,8 +73,7 @@ public class PlayerModel {
       }
       gearList.remove(temp);
     }
-    System.out.println(gearMap);
-    return equippedGears;
+    p.setEquippedGears(equippedGears);
   }
 
   /**

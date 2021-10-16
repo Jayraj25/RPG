@@ -1,55 +1,63 @@
 package battleground;
 
-import gear.Gear;
-import player.Player;
-
+import java.util.ArrayList;
 import java.util.List;
+
+import player.Player;
 
 /**
  * A place where all the operations regarding battle takes place.
  * */
 public class BattleModel implements BattleArena {
 
-  private Player p1;
-  private Player p2;
+  private final Player p1;
+  private final Player p2;
   private Player attacker;
   private Player defender;
-  private int player1StrikeCount = 0;
-  private int player2StrikeCount = 0;
+  private int trackRounds;
+  PlayerModel pm = new PlayerModel();
 
+  /**
+   * Constructs battle which consists of two players.
+   * @param p1 player 1
+   * @param p2 player 2
+   */
   public BattleModel(Player p1, Player p2) {
     this.p1 = p1;
     this.p2 = p2;
+    this.trackRounds = 0;
+    this.attacker = p1;
+    this.defender = p2;
   }
 
   @Override
-  public void battle() {
-    attacker = makeFirstMove();
-    if (attacker == p1) {
-      defender = p2;
-    }
-    defender = p1;
-    makeMove();
-    getTurn();
-    while (p1.getPlayerHealth() > 0 && p2.getPlayerHealth() > 0) {
-      makeMove();
-      getTurn();
-      System.out.println("Player 1 health: " + p1.getPlayerHealth());
-      System.out.println("Player 2 health: " + p2.getPlayerHealth());
-    }
-
-  }
-
-  @Override
-  public void getTurn() {
-    if (attacker == p1) {
-      attacker = p2;
-      defender = p1;
+  public List<String> getTurn() {
+    if (getTrackRounds() == 0) {
+      if (p1.getCharisma() > p2.getCharisma()) {
+        setAttacker(p1);
+        setDefender(p2);
+      }
+      else {
+        setAttacker(p2);
+        setDefender(p1);
+      }
     }
     else {
-      attacker = p1;
-      defender = p2;
+      if (attacker == p1) {
+        setAttacker(p2);
+        setDefender(p1);
+      }
+      else {
+        setAttacker(p1);
+        setDefender(p2);
+      }
     }
+    int temp = trackRounds + 1;
+    setTrackRounds(temp);
+    List<String> temp1 = new ArrayList<>();
+    temp1.add(attacker.getPlayerName());
+    temp1.add(defender.getPlayerName());
+    return temp1;
   }
 
   @Override
@@ -64,25 +72,44 @@ public class BattleModel implements BattleArena {
   }
 
   @Override
-  public Player makeFirstMove() {
-    if (p1.getCharisma() > p2.getCharisma()) {
-      return p1;
-    }
-    else {
-      return p2;
-    }
-  }
-
-  @Override
   public boolean isGameOver() {
     return p1.getPlayerHealth() <= 0 || p2.getPlayerHealth() <= 0;
   }
 
   @Override
-  public void makeMove() {
+  public List<String> makeMove() {
+    List<String> temp = getTurn();
+    temp.add(String.valueOf(attacker.getStrikingPower()));
+    temp.add(String.valueOf(defender.getAvoidanceAbility()));
     if (attacker.getStrikingPower() > defender.getAvoidanceAbility()) {
-      System.out.println("The striking power of P" + attacker.getPlayerID() + " is " + attacker.getStrikingPower());
+      temp.add(attacker.getPlayerName());
       defender.getActualDamage(attacker);
     }
+    else {
+      temp.add(defender.getPlayerName());
+    }
+    return temp;
+  }
+
+  @Override
+  public int getTrackRounds() {
+    return trackRounds;
+  }
+
+  private void setTrackRounds(int trackRounds) {
+    this.trackRounds = trackRounds;
+  }
+
+  private void setAttacker(Player attacker) {
+    this.attacker = attacker;
+  }
+
+  private void setDefender(Player defender) {
+    this.defender = defender;
+  }
+
+  @Override
+  public void equipGears(Player p) {
+    pm.equipGears(p);
   }
 }

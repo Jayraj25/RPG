@@ -1,6 +1,5 @@
 package gear;
 
-import player.Player;
 import player.PlayerAbilities;
 
 import java.util.Map;
@@ -9,12 +8,6 @@ import java.util.Map;
  * Create different gears and get the affects of the gear on player's health.
  */
 public interface Gear {
-
-  /**
-   * get the affect of different gear on player's health.
-   * @param p the player
-   */
-  void mountGear(Player p);
 
   /**
    * Gets how much the player's ability is affected.

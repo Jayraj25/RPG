@@ -1,6 +1,5 @@
 package gear;
 
-import player.Player;
 import player.PlayerAbilities;
 
 import java.util.HashMap;
@@ -16,10 +15,6 @@ abstract class AbstractGear implements Gear {
 
   protected AbstractGear(String gearName) {
     this.gearName = gearName;
-  }
-
-  @Override
-  public void mountGear(Player p) {
   }
 
   @Override

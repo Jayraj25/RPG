@@ -72,7 +72,6 @@ public class Potions extends AbstractGear {
     return 1;
   }
 
-
   @Override
   public int compareTo(Gear o) {
     if (o instanceof AbstractGear) {
@@ -82,4 +81,8 @@ public class Potions extends AbstractGear {
     return -1;
   }
 
+  @Override
+  public String toString() {
+    return "Potion created successfully.";
+  }
 }

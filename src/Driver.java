@@ -25,16 +25,6 @@ public class Driver {
 
     GenerateRandomNumber r = new GenerateRandomNumber();
 
-//    for (Gear x : p1Gears) {
-//      if (p2Gears.contains(x)) {
-//        throw new IllegalAccessError("Not allowed");
-//      }
-//    }
-//    System.out.println("Player 1: " + p1.getAbilitiesMap());
-//    System.out.println("Player 1: " + p1.getUpdatedAbilitiesMap());
-//    System.out.println("Player 2: " + p2.getAbilitiesMap());
-//    System.out.println("Player 2: " + p2.getUpdatedAbilitiesMap());
-
     boolean rematch = true;
     System.out.println("Welcome to Kal's Battle arena.");
     System.out.println("--------------------------------------");
@@ -46,10 +36,6 @@ public class Driver {
       p2.setProperties();
       System.out.println(p1.getPlayerName() + ": " + p1.getAbilitiesMap());
       System.out.println(p2.getPlayerName() + ": " + p2.getAbilitiesMap());
-
-      Bag bag = new BagOfEquipments(7,7,
-              23,43);
-      List<Gear> equipments = bag.getEquipments();
 
       BattleModel battleModel = new BattleModel(p1,p2);
       battleModel.equipGears(p1);
@@ -90,13 +76,18 @@ public class Driver {
       System.out.println("\nAfter equipping gears, " + p2.getPlayerName() + ": \n"
               + p2.getAbilitiesMap());
 
-      ArmoryProducer a = new ArmoryProducer(5,5,5,5,5);
+      ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
+              (4,6,4, 7,5));
       List<Weapon> armory = a.generateArmory();
       p1.equipWeapon(armory);
       p2.equipWeapon(armory);
-      System.out.println("\n" + p1.getPlayerName() +  " Weapon: " + p1.getWeaponEquippedType());
-      System.out.println("\n" + p2.getPlayerName() + " Weapon: " + p2.getWeaponEquippedType());
-
+      System.out.println("===================================");
+      System.out.println(p1.getPlayerName() +  "'s Weapon: " + p1.getWeaponEquippedType());
+      System.out.println(p2.getPlayerName() + "'s Weapon: " + p2.getWeaponEquippedType());
+      System.out.println("===================================");
+      System.out.println("Initial Health:");
+      System.out.println(p1.getPlayerName() + ": " + p1.getPlayerHealth());
+      System.out.println(p2.getPlayerName() + ": " + p2.getPlayerHealth());
       System.out.println("\nBattle Starts.");
       System.out.println("-----------------------------------");
       while (p1.getPlayerHealth() > 0 && p2.getPlayerHealth() > 0) {
@@ -111,6 +102,7 @@ public class Driver {
         System.out.println(nameAttacker + "'s striking power is: " + attackerStrikingPower);
         System.out.println(nameDefender + "'s avoidance ability is: " + defenderAvoidanceAbility);
         System.out.println(roundWinner + " is the round winner.");
+        System.out.println("The actual damage is: " + temp.get(5));
         System.out.println("Player's health after round " + battleModel.getTrackRounds() + ":");
         System.out.println(p1.getPlayerName() + "'s health: " + p1.getPlayerHealth());
         System.out.println(p2.getPlayerName() + "'s health: " + p2.getPlayerHealth());

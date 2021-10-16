@@ -17,9 +17,10 @@ import java.util.Map;
 public class PlayerModel {
 
   BagOfEquipments bag = new BagOfEquipments(7,7,
-          23,30);
-  GenerateRandomNumber g = new GenerateRandomNumber(3);
+          23,43);
+  GenerateRandomNumber g = new GenerateRandomNumber(7);
   private final List<Gear> gearList = bag.getEquipments();
+
 
   private Map<GearCategory,Integer> makeGearMap() {
     Map<GearCategory, Integer> gearMap = new HashMap<>();
@@ -85,7 +86,7 @@ public class PlayerModel {
    * @return the weapon picked by the player.
    */
   public Weapon equipWeapon(List<Weapon> armory) {
-    int temp = g.getRandomNumber(0, armory.size());
+    int temp = g.getRandomNumber(0, armory.size() - 1);
     Weapon assignedWeapon = armory.get(temp);
     armory.remove(temp);
     return assignedWeapon;

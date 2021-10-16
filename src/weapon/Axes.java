@@ -16,4 +16,9 @@ public class Axes extends AbstractWeapon {
   public WeaponTypes getTypeOfWeapon() {
     return WeaponTypes.AXE;
   }
+
+  @Override
+  public String toString() {
+    return "Axe created successfully.";
+  }
 }

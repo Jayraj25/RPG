@@ -4,6 +4,9 @@ import numbergenerator.GenerateRandomNumber;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for random generator class where all the validations are done.
+ */
 public class GenerateRandomNumberTest {
 
   GenerateRandomNumber g = new GenerateRandomNumber(3);

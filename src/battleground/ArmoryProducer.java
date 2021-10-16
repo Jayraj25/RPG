@@ -30,6 +30,10 @@ public class ArmoryProducer implements Armory {
    */
   public ArmoryProducer(
       int noOfKatana, int noOfBroadSword, int noOfTwoHandedSword, int noOfAxe, int noOfFlail) {
+    if (noOfAxe < 1 || noOfBroadSword < 1 || noOfFlail < 1 || noOfKatana < 1
+            || noOfTwoHandedSword < 1) {
+      throw new IllegalArgumentException("There should be at least one weapon of each type.");
+    }
     this.noOfKatana = noOfKatana;
     this.noOfBroadSword = noOfBroadSword;
     this.noOfTwoHandedSword = noOfTwoHandedSword;
@@ -64,5 +68,10 @@ public class ArmoryProducer implements Armory {
       armory.add(wf.createWeapon(WeaponTypes.FLAIL));
     }
     return armory;
+  }
+
+  @Override
+  public String toString() {
+    return "Armory created successfully";
   }
 }

@@ -48,7 +48,7 @@ public class BagOfEquipments implements Bag {
     String temp;
 
     for (int i = 0; i < noOfHeadGears; i++) {
-      temp = "Head Gear" + (i + 1);
+      temp = "HeadGear " + (i + 1);
       equipments.add(gf.createGears(temp,GearCategory.HEADGEAR));
     }
 
@@ -116,10 +116,6 @@ public class BagOfEquipments implements Bag {
 
   @Override
   public String toString() {
-    StringBuilder temp = new StringBuilder();
-    for (Gear g: equipments) {
-      temp.append("(").append(g.getName()).append(")").append(g.getAbilityMap());
-    }
-    return temp.toString();
+    return "Bag created successfully";
   }
 }

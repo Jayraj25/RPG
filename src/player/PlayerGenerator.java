@@ -9,6 +9,7 @@ import weapon.WeaponTypes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,6 @@ public class PlayerGenerator implements Player {
   private Weapon weaponEquipped;
   private WeaponTypes weaponEquippedType;
   Map<PlayerAbilities, Integer> updatedAbilitiesMap = abilitiesMap;
-  private boolean abilitiesUpdated = false;
   private int playerHealth;
   private int strikingPower;
   private int avoidanceAbility;
@@ -37,7 +37,10 @@ public class PlayerGenerator implements Player {
    * Constructs a player.
    * @param g the type of random generator to be used
    * */
-  public PlayerGenerator(String name, GenerateRandomNumber g) {
+  public PlayerGenerator(String name, GenerateRandomNumber g) throws IllegalArgumentException {
+    if (name == null) {
+      throw new IllegalArgumentException("Name cannot be null");
+    }
     this.playerName = name;
     this.g = g;
     this.weaponEquippedType = WeaponTypes.BARE_HANDS;
@@ -136,11 +139,10 @@ public class PlayerGenerator implements Player {
       Map<PlayerAbilities,Integer> abilityMap = gear.getAbilityMap();
       for (Map.Entry<PlayerAbilities,Integer> m : abilityMap.entrySet()) {
         int x = updatedAbilitiesMap.get(m.getKey());
-        x += m.getValue() * gearUnit;;
+        x += m.getValue() * gearUnit;
         updatedAbilitiesMap.put(m.getKey(),x);
       }
     }
-    abilitiesUpdated = true;
     computeTotalHealth();
   }
 
@@ -254,5 +256,15 @@ public class PlayerGenerator implements Player {
       playerHealth -= actualDamage;
     }
     return actualDamage;
+  }
+
+  @Override
+  public List<String> sortGears() {
+    Collections.sort(equippedGears);
+    List<String> gearNamesSortedOrder = new ArrayList<>();
+    for (Gear s : equippedGears) {
+      gearNamesSortedOrder.add(s.getName());
+    }
+    return gearNamesSortedOrder;
   }
 }

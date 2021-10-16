@@ -32,4 +32,20 @@ public class FootWear extends AbstractGear {
   public GearCategory getGearCategory() {
     return gearCategory;
   }
+
+  @Override
+  protected int compareToFootwear(FootWear that) {
+    Integer m = Integer.parseInt(that.getName().split(" ")[1]);
+    Integer n = Integer.parseInt(this.getName().split(" ")[1]);
+    return m.compareTo(n);
+  }
+
+  @Override
+  public int compareTo(Gear o) {
+    if (o instanceof AbstractGear) {
+      AbstractGear that = (AbstractGear) o;
+      return that.compareToFootwear(this);
+    }
+    return -1;
+  }
 }

@@ -48,7 +48,7 @@ public class Driver {
       System.out.println(p2.getPlayerName() + ": " + p2.getAbilitiesMap());
 
       Bag bag = new BagOfEquipments(7,7,
-              23,30);
+              23,43);
       List<Gear> equipments = bag.getEquipments();
 
       BattleModel battleModel = new BattleModel(p1,p2);
@@ -79,7 +79,9 @@ public class Driver {
       }
 
       System.out.println("\n" + p1.getPlayerName() + ":\n" + p1Gears);
+      System.out.println("Sorted order:\n" + p1.sortGears());
       System.out.println("\n" + p2.getPlayerName() + ":\n" + p2Gears);
+      System.out.println("Sorted order:\n" + p2.sortGears());
       p1.makeChangesInAbilities();
       p2.makeChangesInAbilities();
 

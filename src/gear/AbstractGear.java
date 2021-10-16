@@ -14,6 +14,9 @@ abstract class AbstractGear implements Gear {
   protected boolean flag = false;
 
   protected AbstractGear(String gearName) {
+    if (gearName == null) {
+      throw new IllegalArgumentException("Gear name cannot be null");
+    }
     this.gearName = gearName;
   }
 
@@ -48,5 +51,21 @@ abstract class AbstractGear implements Gear {
 
   public void setFlag(boolean flag) {
     this.flag = flag;
+  }
+
+  protected int compareToHeadGear(HeadGear that) {
+    return -1;
+  }
+
+  protected int compareToFootwear(FootWear that) {
+    return 1;
+  }
+
+  protected int compareToBelt(Belts that) {
+    return -1;
+  }
+
+  protected int compareToPotion(Potions that) {
+    return -1;
   }
 }

@@ -32,4 +32,35 @@ public class HeadGear extends AbstractGear {
   public GearCategory getGearCategory() {
     return gearCategory;
   }
+
+  @Override
+  protected int compareToHeadGear(HeadGear that) {
+    Integer m = Integer.parseInt(that.getName().split(" ")[1]);
+    Integer n = Integer.parseInt(this.getName().split(" ")[1]);
+    return m.compareTo(n);
+  }
+
+  @Override
+  protected int compareToFootwear(FootWear that) {
+    return 1;
+  }
+
+  @Override
+  protected int compareToBelt(Belts that) {
+    return 1;
+  }
+
+  @Override
+  protected int compareToPotion(Potions that) {
+    return 1;
+  }
+
+  @Override
+  public int compareTo(Gear o) {
+    if (o instanceof AbstractGear) {
+      AbstractGear that = (AbstractGear) o;
+      return that.compareToHeadGear(this);
+    }
+    return -1;
+  }
 }

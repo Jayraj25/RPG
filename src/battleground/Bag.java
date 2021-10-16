@@ -15,4 +15,7 @@ public interface Bag {
    * @return list of gears.
    * */
   List<Gear> getEquipments();
+
+  @Override
+  String toString();
 }

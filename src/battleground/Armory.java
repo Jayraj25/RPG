@@ -1,8 +1,8 @@
 package battleground;
 
-import java.util.List;
-
 import weapon.Weapon;
+
+import java.util.List;
 
 /**
  * Create a space where different types of weapon will be there
@@ -15,4 +15,7 @@ public interface Armory {
    * players for choice of weapon before the battle starts.
    * */
   List<Weapon> generateArmory();
+
+  @Override
+  String toString();
 }

@@ -14,12 +14,13 @@ public interface BattleArena {
   /**
    * Get the winner if the game is over.
    * @return the winner of the battle
-   * @throws IllegalAccessException if accessed before the game is over.
+   * @throws IllegalStateException if accessed before the game is over.
    */
-  Player getWinner() throws IllegalAccessException;
+  Player getWinner() throws IllegalStateException;
 
   /**
    * Decide which is the player having next turn to attack.
+   * @return list containing the attacker and defender name respectively
    * */
   List<String> getTurn();
 
@@ -31,9 +32,10 @@ public interface BattleArena {
 
   /**
    * The attacker attacks and the defender defends based on the striking power and avoidance
-   * abilities and returns attacker name, defender name, * striking power, avoidance ability.
+   * abilities and returns attacker name, defender name, striking power, avoidance ability, and
+   * the round winner and the actual damage.
    *
-   * @return the list of string containing
+   * @return the list of strings
    */
   List<String> makeMove();
 
@@ -48,4 +50,19 @@ public interface BattleArena {
    * @param p the player
    */
   void equipGears(Player p);
+
+  @Override
+  String toString();
+
+  /**
+   * Return the players participating in the battle.
+   * @return the player
+   */
+  Player getPlayer1();
+
+  /**
+   * Return the players participating in the battle.
+   * @return the player
+   */
+  Player getPlayer2();
 }

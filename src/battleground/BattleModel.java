@@ -22,12 +22,26 @@ public class BattleModel implements BattleArena {
    * @param p1 player 1
    * @param p2 player 2
    */
-  public BattleModel(Player p1, Player p2) {
+  public BattleModel(Player p1, Player p2) throws IllegalArgumentException {
+    if (p1 == null || p2 == null) {
+      throw new IllegalArgumentException("Null values not accepted");
+    }
     this.p1 = p1;
     this.p2 = p2;
     this.trackRounds = 0;
     this.attacker = p1;
     this.defender = p2;
+  }
+
+  /**
+   * Copy constructor of battle arena to avoid mutation.
+   * @param battleArena the arena where battle takes place
+   * */
+  public BattleModel(BattleArena battleArena) {
+    this.p1 = battleArena.getPlayer1();
+    this.p2 = battleArena.getPlayer2();
+    this.attacker = battleArena.getPlayer1();
+    this.defender = battleArena.getPlayer2();
   }
 
   @Override
@@ -61,9 +75,12 @@ public class BattleModel implements BattleArena {
   }
 
   @Override
-  public Player getWinner() throws IllegalAccessException {
+  public Player getWinner() throws IllegalStateException {
+    if (p1.getPlayerHealth() == 0 || p2.getPlayerHealth() == 0) {
+      throw new IllegalStateException("Compute the health of players");
+    }
     if (p1.getPlayerHealth() > 0 && p2.getPlayerHealth() > 0) {
-      throw new IllegalAccessException("Game still going on");
+      throw new IllegalStateException("Game still going on");
     }
     else if (p1.getPlayerHealth() <= 0) {
       return p2;
@@ -113,5 +130,20 @@ public class BattleModel implements BattleArena {
   @Override
   public void equipGears(Player p) {
     pm.equipGears(p);
+  }
+
+  @Override
+  public String toString() {
+    return "Battle model created successfully.";
+  }
+
+  @Override
+  public Player getPlayer1() {
+    return p1;
+  }
+
+  @Override
+  public Player getPlayer2() {
+    return p2;
   }
 }

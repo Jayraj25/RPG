@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Creates the player for the battle.
+ * Creates the player for the battle with operations to be done on player.
  * */
 public class PlayerGenerator implements Player {
 

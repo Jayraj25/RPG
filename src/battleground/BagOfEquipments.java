@@ -43,6 +43,33 @@ public class BagOfEquipments implements Bag {
     this.noOfPotions = noOfPotions;
   }
 
+  /**
+   * Making a copy of original constructor to avoid mutation.
+   * @param bagOfEquipments the bag with gears
+   * */
+  public BagOfEquipments(Bag bagOfEquipments) {
+    this.noOfHeadGears = getNoOfHeadGears();
+    this.noOfFootwear = getNoOfFootwear();
+    this.noOfBelts = getNoOfBelts();
+    this.noOfPotions = getNoOfPotions();
+  }
+
+  private int getNoOfHeadGears() {
+    return noOfHeadGears;
+  }
+
+  private int getNoOfFootwear() {
+    return noOfFootwear;
+  }
+
+  private int getNoOfBelts() {
+    return noOfBelts;
+  }
+
+  private int getNoOfPotions() {
+    return noOfPotions;
+  }
+
   private void generateEquipmentSet() {
 
     String temp;

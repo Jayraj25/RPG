@@ -16,4 +16,9 @@ public class Katanas extends AbstractSword {
   public WeaponTypes getTypeOfWeapon() {
     return WeaponTypes.KATANA;
   }
+
+  @Override
+  public String toString() {
+    return "Katana created successfully.";
+  }
 }

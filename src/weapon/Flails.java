@@ -16,4 +16,9 @@ public class Flails implements Weapon {
   public WeaponTypes getTypeOfWeapon() {
     return WeaponTypes.FLAIL;
   }
+
+  @Override
+  public String toString() {
+    return "Flails created successfully.";
+  }
 }

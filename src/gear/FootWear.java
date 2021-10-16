@@ -48,4 +48,9 @@ public class FootWear extends AbstractGear {
     }
     return -1;
   }
+
+  @Override
+  public String toString() {
+    return "Footwear created successfully.";
+  }
 }

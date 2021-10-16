@@ -19,33 +19,38 @@ public class BagOfEquipmentsTest {
 
   @Test
   public void testBagCreation() {
-    assertEquals("Bag created successfully", new BagOfEquipments(
-            7,7,20,20).toString());
+    assertEquals("Bag created successfully", new BagOfEquipments(new BagOfEquipments(
+            7,7,20,20)).toString());
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testMinHeadGearLessThan5() {
-    new BagOfEquipments(2,5,5,5);
+    new BagOfEquipments(new BagOfEquipments(2,5,
+            5,5));
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testMinFootwearLessThan5() {
-    new BagOfEquipments(7,3,5,5);
+    new BagOfEquipments(new BagOfEquipments(7,
+            3,5,5));
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testMinBeltsLessThan15() {
-    new BagOfEquipments(6,8,5,5);
+    new BagOfEquipments(new BagOfEquipments(6,8,
+            5,5));
   }
 
   @Test (expected = IllegalArgumentException.class)
   public void testMinPotionsLessThan15() {
-    new BagOfEquipments(6,8,25,5);
+    new BagOfEquipments(new BagOfEquipments(6,8,
+            25,5));
   }
 
   @Test
   public void getEquipments() {
-    bag = new BagOfEquipments(7,7,23,23);
+    bag = new BagOfEquipments(new BagOfEquipments(7,7,
+            23,23));
     List<Gear> temp = bag.getEquipments();
     List<String> actual = new ArrayList<>();
     for (Gear s : temp) {
@@ -68,9 +73,5 @@ public class BagOfEquipmentsTest {
       }
     };
     assertEquals(expected,actual);
-  }
-
-  @Test
-  public void testToString() {
   }
 }

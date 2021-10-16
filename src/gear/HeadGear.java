@@ -63,4 +63,9 @@ public class HeadGear extends AbstractGear {
     }
     return -1;
   }
+
+  @Override
+  public String toString() {
+    return "Headgear created successfully.";
+  }
 }

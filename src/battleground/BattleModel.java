@@ -1,9 +1,9 @@
 package battleground;
 
+import player.Player;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import player.Player;
 
 /**
  * A place where all the operations regarding battle takes place.
@@ -79,15 +79,17 @@ public class BattleModel implements BattleArena {
   @Override
   public List<String> makeMove() {
     List<String> temp = getTurn();
+    int actualDamage = 0;
     temp.add(String.valueOf(attacker.getStrikingPower()));
     temp.add(String.valueOf(defender.getAvoidanceAbility()));
     if (attacker.getStrikingPower() > defender.getAvoidanceAbility()) {
       temp.add(attacker.getPlayerName());
-      defender.getActualDamage(attacker);
+      actualDamage = defender.getActualDamage(attacker);
     }
     else {
       temp.add(defender.getPlayerName());
     }
+    temp.add(String.valueOf(actualDamage));
     return temp;
   }
 

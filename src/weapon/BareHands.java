@@ -15,4 +15,9 @@ public class BareHands extends AbstractWeapon {
   public WeaponTypes getTypeOfWeapon() {
     return WeaponTypes.BARE_HANDS;
   }
+
+  @Override
+  public String toString() {
+    return "Bare Hands created successfully.";
+  }
 }

@@ -95,4 +95,9 @@ public class Belts extends AbstractGear {
     }
     return -1;
   }
+
+  @Override
+  public String toString() {
+    return "Belt created successfully.";
+  }
 }

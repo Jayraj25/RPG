@@ -1,17 +1,21 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import gear.Belts;
 import gear.Gear;
 import gear.GearCategory;
 import gear.GearFactory;
 import player.PlayerAbilities;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
+/**
+ * Test regarding gears like checking for null values, getting how the gear affects ability,
+ * creation of gears, testing the type of gear, etc.
+ */
 public class GearTest {
 
   GearFactory gf = new GearFactory();
@@ -20,9 +24,42 @@ public class GearTest {
   Gear belt = gf.createGears("Body protector", GearCategory.BELT);
   Gear potion = gf.createGears("Spider's Blood", GearCategory.POTION);
 
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test (expected = NullPointerException.class)
   public void testNullGearCreation() {
     gf.createGears("asd",null);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void testBullGearName() {
+    gf.createGears(null,GearCategory.POTION);
+    thrown.expectMessage("Gear name cannot be null");
+  }
+
+  @Test
+  public void testHeadGearCreation() {
+    assertEquals("Headgear created successfully.",
+            gf.createGears("xcxcv",GearCategory.HEADGEAR).toString());
+  }
+
+  @Test
+  public void testFootwearCreation() {
+    assertEquals("Footwear created successfully.",
+            gf.createGears("xcxcv",GearCategory.FOOTWEAR).toString());
+  }
+
+  @Test
+  public void testPotionCreation() {
+    assertEquals("Potion created successfully.",
+            gf.createGears("xcxcv",GearCategory.POTION).toString());
+  }
+
+  @Test
+  public void testBeltCreation() {
+    assertEquals("Belt created successfully.",
+            gf.createGears("xcxcv",GearCategory.BELT).toString());
   }
 
   @Test
@@ -94,11 +131,11 @@ public class GearTest {
 
   @Test
   public void testBeltType() throws IllegalAccessException {
-    assertEquals("Small",belt.getBeltType().toString());
+    assertEquals("Large",belt.getBeltType().toString());
   }
 
   @Test
   public void getGearUnit() throws IllegalAccessException {
-    assertEquals(1,belt.getGearUnit());
+    assertEquals(4,belt.getGearUnit());
   }
 }

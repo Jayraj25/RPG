@@ -41,30 +41,67 @@ public class ArmoryProducer implements Armory {
     this.noOfFlail = noOfFlail;
   }
 
+  /**
+   * Copy constructor which constructs an armory.
+   * @param armoryProducer the armory
+   */
+  public ArmoryProducer(Armory armoryProducer) {
+    this.noOfKatana = armoryProducer.getNoOfKatana();
+    this.noOfBroadSword = armoryProducer.getNoOfBroadSword();
+    this.noOfTwoHandedSword = armoryProducer.getNoOfTwoHandedSword();
+    this.noOfAxe = armoryProducer.getNoOfAxe();
+    this.noOfFlail = armoryProducer.getNoOfFlail();
+  }
+
+  @Override
+  public int getNoOfKatana() {
+    return noOfKatana;
+  }
+
+  @Override
+  public int getNoOfBroadSword() {
+    return noOfBroadSword;
+  }
+
+  @Override
+  public int getNoOfTwoHandedSword() {
+    return noOfTwoHandedSword;
+  }
+
+  @Override
+  public int getNoOfAxe() {
+    return noOfAxe;
+  }
+
+  @Override
+  public int getNoOfFlail() {
+    return noOfFlail;
+  }
+
   @Override
   public List<Weapon> generateArmory() {
+
+    for (int i = 0; i < getNoOfKatana(); i++) {
+      armory.add(wf.createWeapon(WeaponTypes.KATANA));
+    }
 
     for (int i = 0; i < 3; i++) {
       armory.add(wf.createWeapon(WeaponTypes.BARE_HANDS));
     }
 
-    for (int i = 0; i < noOfKatana; i++) {
-      armory.add(wf.createWeapon(WeaponTypes.KATANA));
-    }
-
-    for (int i = 0; i < noOfBroadSword; i++) {
+    for (int i = 0; i < getNoOfBroadSword(); i++) {
       armory.add(wf.createWeapon(WeaponTypes.BROADSWORD));
     }
 
-    for (int i = 0; i < noOfTwoHandedSword; i++) {
+    for (int i = 0; i < getNoOfTwoHandedSword(); i++) {
       armory.add(wf.createWeapon(WeaponTypes.TWO_HANDED_SWORD));
     }
 
-    for (int i = 0; i < noOfAxe; i++) {
+    for (int i = 0; i < getNoOfAxe(); i++) {
       armory.add(wf.createWeapon(WeaponTypes.AXE));
     }
 
-    for (int i = 0; i < noOfFlail; i++) {
+    for (int i = 0; i < getNoOfFlail(); i++) {
       armory.add(wf.createWeapon(WeaponTypes.FLAIL));
     }
     return armory;

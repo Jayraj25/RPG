@@ -16,4 +16,9 @@ public class TwoHandedSwords extends AbstractSword {
   public WeaponTypes getTypeOfWeapon() {
     return WeaponTypes.TWO_HANDED_SWORD;
   }
+
+  @Override
+  public String toString() {
+    return "Two Handed Sword created successfully.";
+  }
 }

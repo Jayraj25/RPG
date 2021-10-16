@@ -1,10 +1,9 @@
 package gear;
 
-import java.util.HashMap;
+import player.PlayerAbilities;
+
 import java.util.Map;
 
-import player.Player;
-import player.PlayerAbilities;
 
 /**
  * Creates the Footwear and Helps in getting how much
@@ -32,10 +31,5 @@ public class FootWear extends AbstractGear {
   @Override
   public GearCategory getGearCategory() {
     return gearCategory;
-  }
-
-  @Override
-  public void mountGear(Player p) {
-    p.setDexterity(p.getDexterity() + 4);
   }
 }

@@ -1,10 +1,9 @@
 package gear;
 
-import java.util.HashMap;
+import player.PlayerAbilities;
+
 import java.util.Map;
 
-import player.Player;
-import player.PlayerAbilities;
 
 /**
  * Creates the headGear and Helps in getting how much
@@ -32,10 +31,5 @@ public class HeadGear extends AbstractGear {
   @Override
   public GearCategory getGearCategory() {
     return gearCategory;
-  }
-
-  @Override
-  public void mountGear(Player p) {
-    p.setConstitution(p.getConstitution() + 5);
   }
 }

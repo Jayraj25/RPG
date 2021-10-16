@@ -1,282 +1,161 @@
 package player;
 
-import battleground.PlayerModel;
 import gear.Gear;
-import gear.GearCategory;
-import numbergenerator.GenerateRandomNumber;
 import weapon.Weapon;
 import weapon.WeaponTypes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * Creates the player for the battle.
+ * A player is created and computation regarding player takes place here like generating properties,
+ * and computing player's power's during which are required during battle.
  * */
-public class Player {
-
-  private final int playerID;
-  private final GenerateRandomNumber g;
-  private List<Gear> equippedGears = new ArrayList<>();
-  Map<PlayerAbilities,Integer> abilitiesMap = new HashMap<>();
-  PlayerModel m = new PlayerModel();
-  private Weapon weaponEquipped;
-  private WeaponTypes weaponEquippedType;
-  Map<PlayerAbilities, Integer> updatedAbilitiesMap = abilitiesMap;
-  private boolean abilitiesUpdated = false;
-  private int playerHealth;
-  private int strikingPower;
-  private int avoidanceAbility;
-  private int potentialStrikingDamage;
-  private int actualDamage;
-
-  /**
-   * Constructs a player.
-   * @param g the type of random generator to be used
-   * */
-  public Player(int ID, GenerateRandomNumber g) {
-    this.playerID = ID;
-    this.g = g;
-    this.weaponEquippedType = WeaponTypes.BARE_HANDS;
-//    for (Map.Entry<PlayerAbilities, Integer> m : abilitiesMap.entrySet()) {
-//      updatedAbilitiesMap.put(m.getKey(),m.getValue());
-//    }
-  }
+public interface Player {
 
   /**
    * Create the attributes of the player.
    * */
-  public void setProperties() {
-    for (PlayerAbilities a: PlayerAbilities.values()) {
-      abilitiesMap.put(a,generateProperty());
-    }
-  }
-
-  private int generateProperty() {
-    int[] arr = new int[4];
-    int result = 0;
-    for (int i = 0; i < 4; i++) {
-      arr[i] = rollDice(g);
-    }
-    Arrays.sort(arr);
-    for (int i = 1; i < 4; i++) {
-      result += arr[i];
-    }
-    return result;
-  }
+  void setProperties();
 
   /**
    * Sets the strength ability of the player.
    * @param strength the strength
    * */
-  public void setStrength(int strength) {
-    abilitiesMap.put(PlayerAbilities.STRENGTH,strength);
-  }
+  void setStrength(int strength);
 
   /**
    * Sets the constitution ability of the player.
    * @param constitution the constitution
    * */
-  public void setConstitution(int constitution) {
-    abilitiesMap.put(PlayerAbilities.CONSTITUTION,constitution);
-  }
+  void setConstitution(int constitution);
 
   /**
    * Sets the dexterity of the player.
    * @param dexterity the dexterity
    * */
-  public void setDexterity(int dexterity) {
-    abilitiesMap.put(PlayerAbilities.DEXTERITY,dexterity);
-  }
+  void setDexterity(int dexterity);
 
   /**
    * Sets the charisma of the player.
    * @param charisma the charisma
    * */
-  public void setCharisma(int charisma) {
-    abilitiesMap.put(PlayerAbilities.CHARISMA,charisma);
-  }
-
-  private int rollDice(GenerateRandomNumber g) {
-    int temp = g.getRandomNumber(1,6);
-    while (temp < 2) {
-      temp = g.getRandomNumber(1,6);
-    }
-    return temp;
-  }
-
-  public int getPlayerID() {
-    return playerID;
-  }
-
-  public int getStrength() {
-    return abilitiesMap.get(PlayerAbilities.STRENGTH);
-  }
-
-  public int getConstitution() {
-    return abilitiesMap.get(PlayerAbilities.CONSTITUTION);
-  }
-
-  public int getDexterity() {
-    return abilitiesMap.get(PlayerAbilities.DEXTERITY);
-  }
-
-  public int getCharisma() {
-    return abilitiesMap.get(PlayerAbilities.CHARISMA);
-  }
-
-  @Override
-  public String toString() {
-    return String.format("(Strength: %d, Constitution: %d, Dexterity: %d, Charisma: %d)",
-            getStrength(),getConstitution(),getDexterity(),getCharisma());
-  }
+  void setCharisma(int charisma);
 
   /**
-   * Equip 20 gears from the bag of equipments.
-   * */
-  public void equipGears() {
-    equippedGears = m.equipGears();
-  }
+   * method that returns player's name.
+   * @return the name as string
+   */
+  String getPlayerName();
+
+  /**
+   * method that returns player's strength.
+   * @return the strength as integer
+   */
+  int getStrength();
+
+  /**
+   * method that return player's constitution.
+   * @return the constitution as integer
+   */
+  int getConstitution();
+
+  /**
+   * method that returns player's dexterity.
+   * @return the dexterity as integer
+   */
+  int getDexterity();
+
+  /**
+   * method that returns player's charisma.
+   * @return the charisma as integer
+   */
+  int getCharisma();
 
   /**
    * Makes the changes in abilities once the gears are equipped and after each round.
    * @throws IllegalAccessException if gears not equipped
    * */
-  public Map<PlayerAbilities, Integer> makeChangesInAbilities() throws IllegalAccessException {
-    System.out.println(updatedAbilitiesMap);
-    List<Gear> gearList = equippedGears;
-    if (gearList.size() == 0) {
-      throw new IllegalAccessException("Access not allowed until gears are not equipped");
-    }
-    for (Gear gear : gearList) {
-      int gearUnit = 1;
-      if (gear.equals(GearCategory.BELT)) {
-        gearUnit = gear.getGearUnit();
-      }
-      Map<PlayerAbilities,Integer> abilityMap = gear.getAbilityMap();
-      for (Map.Entry<PlayerAbilities,Integer> m : abilityMap.entrySet()) {
-        int x = updatedAbilitiesMap.get(m.getKey());
-        x += m.getValue();
-        updatedAbilitiesMap.put(m.getKey(),x * gearUnit);
-      }
-    }
-    abilitiesUpdated = true;
-    computeTotalHealth();
-    return updatedAbilitiesMap;
-  }
+  void makeChangesInAbilities() throws IllegalAccessException;
 
-  public Map<PlayerAbilities, Integer> getAbilitiesMap() {
-    return abilitiesMap;
-  }
+  /**
+   * Return the map consisting of player's abilities and their current values.
+   * @return player abilities mapped to value
+   */
+  Map<PlayerAbilities, Integer> getAbilitiesMap();
 
-  public Map<PlayerAbilities, Integer> getUpdatedAbilitiesMap() {
-    return updatedAbilitiesMap;
-  }
+  /**
+   * Return the map consisting of player's abilities and
+   * their current values after equipping gears.
+   * @return player abilities mapped to value
+   */
+  Map<PlayerAbilities, Integer> getUpdatedAbilitiesMap();
+
+  /**
+   * assign list of equipped gears to a player.
+   * @param equippedGears the list of equipped gears
+   */
+  void setEquippedGears(List<Gear> equippedGears);
 
   /** Get the list of equipped gears.
    * @return the list of gears
    * @throws IllegalAccessException if getting the list without equipping the gears from bag
    */
-  public List<Gear> getEquippedGears() throws IllegalAccessException {
-    if (equippedGears.size() == 0) {
-      throw new IllegalAccessException("Gears yet not equipped");
-    }
-    return equippedGears;
-  }
+  List<Gear> getEquippedGears() throws IllegalAccessException;
 
   /**
    * Randomly pick a weapon from the armory.
    * @param armory the list of weapons
    * */
-  public void equipWeapon(List<Weapon> armory) throws IllegalStateException {
-    if (armory.size() == 0) {
-      throw new IllegalStateException("Armory not created");
-    }
-    weaponEquipped = m.equipWeapon(armory);
-    setWeaponEquippedType(weaponEquipped.getTypeOfWeapon());
-    System.out.println(weaponEquipped);
-  }
+  void equipWeapon(List<Weapon> armory) throws IllegalStateException;
 
   /**
    * Get the weapon equipped by the player.
    * @return the weapon
    */
-  public WeaponTypes getWeaponEquipped() {
-    return weaponEquippedType;
-  }
-
-  private void setWeaponEquippedType(WeaponTypes type) {
-    this.weaponEquippedType = type;
-  }
+  WeaponTypes getWeaponEquipped();
 
   /**
    * Get the type of the weapon equipped.
    * @return the weapon type
    * */
-  public WeaponTypes getWeaponEquippedType() {
-    return this.weaponEquippedType;
-  }
-
-  private void computeTotalHealth() {
-    for (Map.Entry<PlayerAbilities,Integer> m : updatedAbilitiesMap.entrySet()) {
-      playerHealth += m.getValue();
-    }
-  }
+  WeaponTypes getWeaponEquippedType();
 
   /**
-   * Gets the total health computed.
+   * Gets the total health computed which is sum of 4 abilities of a player.
    * @return total health
    */
-  public int getPlayerHealth() {
-    return this.playerHealth;
-  }
+  int getPlayerHealth();
 
-  private void computeStrikingPower() {
-    strikingPower = updatedAbilitiesMap.get(PlayerAbilities.STRENGTH) + g.getRandomNumber(0,10);
-  }
 
-  public int getStrikingPower() {
-    computeStrikingPower();
-    return strikingPower;
-  }
+  /**
+   * Striking power is the sum of the strength of the player, any of the gear that
+   * adds (or subtracts) from strength, and a random number between 1 and 10.
+   * @return the striking power
+   * */
+  int getStrikingPower();
 
-  private void computeAvoidanceAbility() {
-    avoidanceAbility = updatedAbilitiesMap.get(PlayerAbilities.DEXTERITY) + g.getRandomNumber(0,6);
-  }
+  /**
+   * Avoidance ability is the sum of the dexterity of the player, any of the gear that
+   * adds (or subtracts) from dexterity, and a random number between 1 and 6.
+   * @return the avoidance ability
+   * */
+  int getAvoidanceAbility();
 
-  public int getAvoidanceAbility() {
-    computeAvoidanceAbility();
-    return avoidanceAbility;
-  }
-
-  private void computePotentialStrikingDamage() {
-    potentialStrikingDamage = updatedAbilitiesMap.get(PlayerAbilities.STRENGTH)
-            + weaponEquipped.getWeaponDamage(g);
-  }
-
-  public int getPotentialStrikingDamage() {
-    computePotentialStrikingDamage();
-    return potentialStrikingDamage;
-  }
-
-  private void computeActualDamage(Player p) {
-    actualDamage = p.getPotentialStrikingDamage()
-            - updatedAbilitiesMap.get(PlayerAbilities.CONSTITUTION);
-  }
+  /**
+   * The potential striking damage is calculated by adding the strength of the attacking player
+   * to a random value in the range of the damage that
+   * their weapon can inflict (if they have a weapon).
+   * @return the potential striking damage
+   * */
+  int getPotentialStrikingDamage();
 
   /**
    * Get the actual damage caused when hit by an opponent.
    * @param p the opponent player
    * @return the damage caused
    */
-  public int getActualDamage(Player p) {
-    computeActualDamage(p);
-    if (actualDamage > 0) {
-      playerHealth -= actualDamage;
-    }
-    return actualDamage;
-  }
+  int getActualDamage(Player p);
+
 }

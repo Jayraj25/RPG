@@ -1,7 +1,5 @@
 package gear;
 
-import numbergenerator.GenerateRandomNumber;
-
 /**
  * Factory to make different gears.
  * */

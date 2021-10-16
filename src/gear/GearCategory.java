@@ -1,5 +1,12 @@
 package gear;
 
+/**
+ * The types of gears that are available for a players to equip.
+ * {@link #BELT}
+ * {@link #FOOTWEAR}
+ * {@link #HEADGEAR}
+ * {@link #POTION}
+ * */
 public enum GearCategory {
   BELT,
   FOOTWEAR,

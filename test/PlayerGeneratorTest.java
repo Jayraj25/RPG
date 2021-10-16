@@ -72,13 +72,13 @@ public class PlayerGeneratorTest {
   /**
    * Accessing the gear list before assigning the gears.
    */
-  @Test (expected = IllegalAccessException.class)
-  public void testEquippedGears() throws IllegalAccessException {
+  @Test (expected = IllegalStateException.class)
+  public void testEquippedGears() {
     p.getEquippedGears();
   }
 
   @Test
-  public void testEquippedGearsList() throws IllegalAccessException {
+  public void testEquippedGearsList() {
     Bag bag = new BagOfEquipments(7,7,
             23,43);
     battleModel.equipGears(p);
@@ -95,6 +95,23 @@ public class PlayerGeneratorTest {
 
     List<String> temp = Arrays.asList(expected);
     assertEquals(temp,assignedGearNames);
+  }
+
+  @Test
+  public void testGearsSortedOrder() {
+    Bag bag = new BagOfEquipments(7,7,
+            23,43);
+    battleModel.equipGears(p);
+    battleModel.equipGears(p2); //seed 4 in player model
+    List<Gear> gearList = p.getEquippedGears();
+    List<String> actual = p.sortGears();
+    String[] expected = new String[]{"HeadGear 3", "Potion 4", "Potion 7", "Potion 10", "Potion 16",
+            "Potion 17", "Potion 20", "Potion 21", "Potion 22", "Potion 23", "Potion 26",
+            "Potion 33", "Potion 34", "Potion 36", "Potion 38", "Potion 39", "Potion 43",
+            "Belt 9", "Belt 18", "Footwear 2"};
+
+    List<String> temp = Arrays.asList(expected);
+    assertEquals(temp,actual);
   }
 
   /**

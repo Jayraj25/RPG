@@ -48,29 +48,34 @@ public class BagOfEquipments implements Bag {
    * @param bagOfEquipments the bag with gears
    * */
   public BagOfEquipments(Bag bagOfEquipments) {
-    this.noOfHeadGears = getNoOfHeadGears();
-    this.noOfFootwear = getNoOfFootwear();
-    this.noOfBelts = getNoOfBelts();
-    this.noOfPotions = getNoOfPotions();
+    this.noOfHeadGears = bagOfEquipments.getNoOfHeadGears();
+    this.noOfFootwear = bagOfEquipments.getNoOfFootwear();
+    this.noOfBelts = bagOfEquipments.getNoOfBelts();
+    this.noOfPotions = bagOfEquipments.getNoOfPotions();
   }
 
-  private int getNoOfHeadGears() {
+  @Override
+  public int getNoOfHeadGears() {
     return noOfHeadGears;
   }
 
-  private int getNoOfFootwear() {
+  @Override
+  public int getNoOfFootwear() {
     return noOfFootwear;
   }
 
-  private int getNoOfBelts() {
+  @Override
+  public int getNoOfBelts() {
     return noOfBelts;
   }
 
-  private int getNoOfPotions() {
+  @Override
+  public int getNoOfPotions() {
     return noOfPotions;
   }
 
-  private void generateEquipmentSet() {
+  @Override
+  public void generateEquipmentSet() {
 
     String temp;
 

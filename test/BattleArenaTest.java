@@ -64,6 +64,24 @@ public class BattleArenaTest {
   }
 
   @Test
+  public void testGetWinner() {
+    arena.equipGears(p1);
+    arena.equipGears(p2);
+    p1.makeChangesInAbilities();
+    p2.makeChangesInAbilities();
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
+            (4,6,4, 7,5));
+    List<Weapon> armory = a.generateArmory();
+    p1.equipWeapon(armory);
+    p2.equipWeapon(armory);
+    while (p1.getPlayerHealth() > 0 && p2.getPlayerHealth() > 0) {
+      arena.makeMove();
+      arena.getTurn();
+    }
+    assertEquals("Jon Snow",arena.getWinner().getPlayerName());
+  }
+
+  @Test
   public void testGetTurn() {
     arena.equipGears(p1);
     arena.equipGears(p2);

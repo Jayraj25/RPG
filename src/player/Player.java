@@ -100,9 +100,9 @@ public interface Player {
 
   /** Get the list of equipped gears.
    * @return the list of gears
-   * @throws IllegalAccessException if getting the list without equipping the gears from bag
+   * @throws IllegalStateException if getting the list without equipping the gears from bag
    */
-  List<Gear> getEquippedGears() throws IllegalAccessException;
+  List<Gear> getEquippedGears() throws IllegalStateException;
 
   /**
    * Randomly pick a weapon from the armory.

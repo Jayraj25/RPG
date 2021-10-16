@@ -48,9 +48,9 @@ public interface Gear extends Comparable<Gear> {
   /**
    * Gets the type of the belt constructed.
    * @return belt type
-   * @throws IllegalAccessException if access is not allowed to that gear object
+   * @throws IllegalStateException if access is not allowed to that gear object
    */
-  BeltTypes getBeltType() throws IllegalAccessException;
+  BeltTypes getBeltType() throws IllegalStateException;
 
   /**
    * get the assigned units of that gear.

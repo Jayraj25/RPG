@@ -114,28 +114,28 @@ public class GearTest {
     assertEquals("Footwear",footWear.getGearCategory().toString());
   }
 
-  @Test(expected = IllegalAccessException.class)
-  public void testHeadGearBeltType() throws IllegalAccessException {
+  @Test(expected = IllegalStateException.class)
+  public void testHeadGearBeltType() {
     headGear.getBeltType();
   }
 
-  @Test(expected = IllegalAccessException.class)
-  public void testFootwearBeltType() throws IllegalAccessException {
+  @Test(expected = IllegalStateException.class)
+  public void testFootwearBeltType() {
     footWear.getBeltType();
   }
 
-  @Test(expected = IllegalAccessException.class)
-  public void testPotionBeltType() throws IllegalAccessException {
+  @Test(expected = IllegalStateException.class)
+  public void testPotionBeltType() {
     potion.getBeltType();
   }
 
   @Test
-  public void testBeltType() throws IllegalAccessException {
+  public void testBeltType() {
     assertEquals("Large",belt.getBeltType().toString());
   }
 
   @Test
-  public void getGearUnit() throws IllegalAccessException {
+  public void getGearUnit() {
     assertEquals(4,belt.getGearUnit());
   }
 }

@@ -73,7 +73,7 @@ public class ArmoryTest {
     }
     List<String> expected = new ArrayList<>() {
       {
-        add("Bare Hands");add("Bare Hands");add("Bare Hands");add("Katana");add("Katana");
+        add("Katana");add("Katana");add("Bare Hands");add("Bare Hands");add("Bare Hands");
         add("Broad Sword");add("Broad Sword");add("Two Handed Swords");
         add("Axe");add("Flail");
       }

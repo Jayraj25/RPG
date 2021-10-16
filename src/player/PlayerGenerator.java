@@ -162,9 +162,9 @@ public class PlayerGenerator implements Player {
   }
 
   @Override
-  public List<Gear> getEquippedGears() throws IllegalAccessException {
+  public List<Gear> getEquippedGears() throws IllegalStateException {
     if (equippedGears.size() == 0) {
-      throw new IllegalAccessException("Gears yet not equipped");
+      throw new IllegalStateException("Gears yet not equipped");
     }
     return equippedGears;
   }

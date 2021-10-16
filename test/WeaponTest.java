@@ -13,6 +13,9 @@ import weapon.WeaponTypes;
 
 import static org.junit.Assert.*;
 
+/**
+ * Tests related to weapons are done here like creation from factory and getting damage.
+ */
 public class WeaponTest {
 
   GenerateRandomNumber g= new GenerateRandomNumber(1);
@@ -31,39 +34,63 @@ public class WeaponTest {
   }
 
   @Test
-  public void testFlailCreation() {
+  public void testFlailCreationFactory() {
     assertEquals(WeaponTypes.FLAIL,f.getTypeOfWeapon());
+  }
+
+  @Test
+  public void testFlailCreation() {
     assertEquals("Flails created successfully.",new Flails().toString());
   }
 
   @Test
-  public void testAxeCreation() {
+  public void testAxeCreationFactory() {
     assertEquals("Axe",a.getTypeOfWeapon().toString());
+  }
+
+  @Test
+  public void testAxeCreation() {
     assertEquals("Axe created successfully.",new Axes().toString());
   }
 
   @Test
-  public void testKatanaCreation() {
+  public void testKatanaCreationFactory() {
     assertEquals("Katana",sk.getTypeOfWeapon().toString());
+  }
+
+  @Test
+  public void testKatanaCreation() {
     assertEquals("Katana created successfully.",new Katanas().toString());
   }
 
   @Test
-  public void testBroadSwordCreation() {
+  public void testBroadSwordCreationFactory() {
     assertEquals("Broad Sword",sb.getTypeOfWeapon().toString());
+  }
+
+  @Test
+  public void testBroadSwordCreation() {
     assertEquals("Broad Sword created successfully.",new BroadSwords().toString());
   }
 
   @Test
-  public void testTwoHandedSwordCreation() {
+  public void testTwoHandedSwordCreationFactory() {
     assertEquals("Two Handed Swords",st.getTypeOfWeapon().toString());
+  }
+
+  @Test
+  public void testTwoHandedSwordCreation() {
     assertEquals("Two Handed Sword created successfully.",
             new TwoHandedSwords().toString());
   }
 
   @Test
-  public void testBareHandsCreation() {
+  public void testBareHandsCreationFactory() {
     assertEquals("Bare Hands",bh.getTypeOfWeapon().toString());
+  }
+
+  @Test
+  public void testBareHandsCreation() {
     assertEquals("Bare Hands created successfully.",new BareHands().toString());
   }
 

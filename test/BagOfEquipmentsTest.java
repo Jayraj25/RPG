@@ -58,8 +58,8 @@ public class BagOfEquipmentsTest {
     }
     List<String> expected = new ArrayList<>() {
       {
-        add("Head Gear1");add("Head Gear2");add("Head Gear3");add("Head Gear4");add("Head Gear5");
-        add("Head Gear6");add("Head Gear7");add("Footwear 1");add("Footwear 2");add("Footwear 3");
+        add("HeadGear 1");add("HeadGear 2");add("HeadGear 3");add("HeadGear 4");add("HeadGear 5");
+        add("HeadGear 6");add("HeadGear 7");add("Footwear 1");add("Footwear 2");add("Footwear 3");
         add("Footwear 4");add("Footwear 5");add("Footwear 6");add("Footwear 7");add("Belt 1");
         add("Belt 2");add("Belt 3");add("Belt 4");add("Belt 5");add("Belt 6");add("Belt 7");
         add("Belt 8");add("Belt 9");add("Belt 10");add("Belt 11");add("Belt 12");add("Belt 13");
@@ -73,5 +73,33 @@ public class BagOfEquipmentsTest {
       }
     };
     assertEquals(expected,actual);
+  }
+
+  @Test
+  public void testGetNoOfHG() {
+    bag = new BagOfEquipments(new BagOfEquipments(7,7,
+            20,20));
+    assertEquals(7,bag.getNoOfHeadGears());
+  }
+
+  @Test
+  public void testGetNoOfFW() {
+    bag = new BagOfEquipments(new BagOfEquipments(7,7,
+            20,20));
+    assertEquals(7,bag.getNoOfFootwear());
+  }
+
+  @Test
+  public void testGetNoOfBelts() {
+    bag = new BagOfEquipments(new BagOfEquipments(7,7,
+            20,20));
+    assertEquals(20,bag.getNoOfBelts());
+  }
+
+  @Test
+  public void testGetNoOfPotions() {
+    bag = new BagOfEquipments(new BagOfEquipments(7,7,
+            20,20));
+    assertEquals(20,bag.getNoOfPotions());
   }
 }

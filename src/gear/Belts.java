@@ -79,4 +79,20 @@ public class Belts extends AbstractGear {
   public int getGearUnit() {
     return beltUnit;
   }
+
+  @Override
+  protected int compareToBelt(Belts that) {
+    Integer m = Integer.parseInt(that.getName().split(" ")[1]);
+    Integer n = Integer.parseInt(this.getName().split(" ")[1]);
+    return m.compareTo(n);
+  }
+
+  @Override
+  public int compareTo(Gear o) {
+    if (o instanceof AbstractGear) {
+      AbstractGear that = (AbstractGear) o;
+      return that.compareToBelt(this);
+    }
+    return -1;
+  }
 }

@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Create different gears and get the affects of the gear on player's health.
  */
-public interface Gear {
+public interface Gear extends Comparable<Gear> {
 
   /**
    * Gets how much the player's ability is affected.

@@ -158,4 +158,10 @@ public interface Player {
    */
   int getActualDamage(Player p);
 
+  /**
+   * Returns the list of gears in sorted order where the order should be all head gears,
+   *  all potions, all belts, all footwear.
+   * @return list of gears
+   * */
+  List<String> sortGears();
 }

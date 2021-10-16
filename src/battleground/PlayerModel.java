@@ -19,6 +19,7 @@ public class PlayerModel {
   BagOfEquipments bag = new BagOfEquipments(7,7,
           23,30);
   GenerateRandomNumber g = new GenerateRandomNumber(3);
+  private final List<Gear> gearList = bag.getEquipments();
 
   private Map<GearCategory,Integer> makeGearMap() {
     Map<GearCategory, Integer> gearMap = new HashMap<>();
@@ -34,7 +35,6 @@ public class PlayerModel {
    * */
   public void equipGears(Player p) {
     Map<GearCategory, Integer> gearMap = makeGearMap();
-    List<Gear> gearList = bag.getEquipments();
     List<Gear> equippedGears = new ArrayList<>();
     int count = 0;
     int beltSum = 0;
@@ -45,33 +45,36 @@ public class PlayerModel {
         gearMap.put(GearCategory.HEADGEAR,1);
         equippedGears.add(gearList.get(temp));
         count++;
+        gearList.remove(temp);
       }
       else if (gearList.get(temp).getGearCategory().equals(GearCategory.FOOTWEAR)
               && gearMap.get(GearCategory.FOOTWEAR) == 0) {
         gearMap.put(GearCategory.FOOTWEAR,1);
         equippedGears.add(gearList.get(temp));
         count++;
+        gearList.remove(temp);
       }
       else if (gearList.get(temp).getGearCategory().equals(GearCategory.BELT)) {
+        try {
+          beltSum += gearList.get(temp).getGearUnit();
+        } catch (IllegalAccessException e) {
+          e.printStackTrace();
+        }
         if (beltSum <= 10) {
-          try {
-            beltSum += gearList.get(temp).getGearUnit();
-          } catch (IllegalAccessException e) {
-            e.printStackTrace();
-          }
           equippedGears.add(gearList.get(temp));
-          count++;
           int addToMap = gearMap.get(GearCategory.BELT) + 1;
           gearMap.put(GearCategory.BELT,addToMap);
+          count++;
+          gearList.remove(temp);
         }
       }
-      else {
+      else if (gearList.get(temp).getGearCategory().equals(GearCategory.POTION)) {
         equippedGears.add(gearList.get(temp));
-        count++;
         int addToMap = gearMap.get(GearCategory.POTION) + 1;
         gearMap.put(GearCategory.POTION,addToMap);
+        count++;
+        gearList.remove(temp);
       }
-      gearList.remove(temp);
     }
     p.setEquippedGears(equippedGears);
   }

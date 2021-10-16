@@ -55,7 +55,7 @@ public interface Gear extends Comparable<Gear> {
   /**
    * get the assigned units of that gear.
    * @return the gear unit
-   * @throws IllegalAccessException if access is not allowed to that gear object
+   * @throws IllegalStateException if access is not allowed to that gear object
    */
-  int getGearUnit() throws IllegalAccessException;
+  int getGearUnit() throws IllegalStateException;
 }

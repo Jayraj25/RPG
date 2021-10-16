@@ -126,10 +126,10 @@ public class PlayerGenerator implements Player {
   }
 
   @Override
-  public void makeChangesInAbilities() throws IllegalAccessException {
+  public void makeChangesInAbilities() throws IllegalStateException {
     List<Gear> gearList = equippedGears;
     if (gearList.size() == 0) {
-      throw new IllegalAccessException("Access not allowed until gears are not equipped");
+      throw new IllegalStateException("Access not allowed until gears are not equipped");
     }
     for (Gear gear : gearList) {
       int gearUnit = 1;
@@ -193,7 +193,8 @@ public class PlayerGenerator implements Player {
     return this.weaponEquippedType;
   }
 
-  private void computeTotalHealth() {
+  @Override
+  public void computeTotalHealth() {
     for (Map.Entry<PlayerAbilities,Integer> m : updatedAbilitiesMap.entrySet()) {
       playerHealth += m.getValue();
     }

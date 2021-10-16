@@ -9,11 +9,10 @@ import java.util.Map;
 /**
  * Creates the Potions and Helps in getting how much it affects a player's ability.
  */
-public class Potions extends AbstractGear {
+class Potions extends AbstractGear {
 
   GenerateRandomNumber g = new GenerateRandomNumber(2);
   private final int potionUnit;
-//  boolean flag = false;
 
   /**
    * Constructs potions with a map that keeps a track of

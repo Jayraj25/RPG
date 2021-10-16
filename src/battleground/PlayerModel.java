@@ -58,7 +58,7 @@ public class PlayerModel {
       else if (gearList.get(temp).getGearCategory().equals(GearCategory.BELT)) {
         try {
           beltSum += gearList.get(temp).getGearUnit();
-        } catch (IllegalAccessException e) {
+        } catch (IllegalStateException e) {
           e.printStackTrace();
         }
         if (beltSum <= 10) {

@@ -1,12 +1,10 @@
 import battleground.ArmoryProducer;
-import battleground.Bag;
-import battleground.BagOfEquipments;
 import battleground.BattleModel;
 import gear.Gear;
 import gear.GearCategory;
 import numbergenerator.GenerateRandomNumber;
-import player.PlayerGenerator;
 import player.Player;
+import player.PlayerGenerator;
 import weapon.Weapon;
 
 import java.util.ArrayList;
@@ -37,7 +35,7 @@ public class Driver {
       System.out.println(p1.getPlayerName() + ": " + p1.getAbilitiesMap());
       System.out.println(p2.getPlayerName() + ": " + p2.getAbilitiesMap());
 
-      BattleModel battleModel = new BattleModel(p1,p2);
+      BattleModel battleModel = new BattleModel(new BattleModel(p1,p2));
       battleModel.equipGears(p1);
       battleModel.equipGears(p2);
 
@@ -115,7 +113,7 @@ public class Driver {
         Player x = null;
         try {
           x = battleModel.getWinner();
-        } catch (IllegalAccessException e) {
+        } catch (IllegalStateException e) {
           e.printStackTrace();
         }
         assert x != null;

@@ -75,9 +75,9 @@ public interface Player {
 
   /**
    * Makes the changes in abilities once the gears are equipped and after each round.
-   * @throws IllegalAccessException if gears not equipped
+   * @throws IllegalStateException if gears not equipped
    * */
-  void makeChangesInAbilities() throws IllegalAccessException;
+  void makeChangesInAbilities() throws IllegalStateException;
 
   /**
    * Return the map consisting of player's abilities and their current values.
@@ -121,6 +121,12 @@ public interface Player {
    * @return the weapon type
    * */
   WeaponTypes getWeaponEquippedType();
+
+  /**
+   * Compute the total health of a player based on the player's abilities
+   * (sum of player's abilities).
+   */
+  void computeTotalHealth();
 
   /**
    * Gets the total health computed which is sum of 4 abilities of a player.

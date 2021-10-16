@@ -41,25 +41,25 @@ public class GearTest {
   @Test
   public void testHeadGearCreation() {
     assertEquals("Headgear created successfully.",
-            gf.createGears("xcxcv",GearCategory.HEADGEAR).toString());
+            gf.createGears("HG 1",GearCategory.HEADGEAR).toString());
   }
 
   @Test
   public void testFootwearCreation() {
     assertEquals("Footwear created successfully.",
-            gf.createGears("xcxcv",GearCategory.FOOTWEAR).toString());
+            gf.createGears("Foot SD",GearCategory.FOOTWEAR).toString());
   }
 
   @Test
   public void testPotionCreation() {
     assertEquals("Potion created successfully.",
-            gf.createGears("xcxcv",GearCategory.POTION).toString());
+            gf.createGears("PotionPQ",GearCategory.POTION).toString());
   }
 
   @Test
   public void testBeltCreation() {
     assertEquals("Belt created successfully.",
-            gf.createGears("xcxcv",GearCategory.BELT).toString());
+            gf.createGears("Belt AB",GearCategory.BELT).toString());
   }
 
   @Test

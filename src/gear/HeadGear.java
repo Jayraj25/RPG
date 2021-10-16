@@ -9,7 +9,7 @@ import java.util.Map;
  * Creates the headGear and Helps in getting how much
  * it affects a player's ability. It affects player's constitution ability.
  * */
-public class HeadGear extends AbstractGear {
+class HeadGear extends AbstractGear {
 
   protected HeadGear(String gearName) {
     super(gearName);

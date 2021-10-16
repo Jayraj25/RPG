@@ -36,13 +36,13 @@ abstract class AbstractGear implements Gear {
   }
 
   @Override
-  public BeltTypes getBeltType() throws IllegalAccessException {
-    throw new IllegalAccessException("Access not allowed");
+  public BeltTypes getBeltType() throws IllegalStateException {
+    throw new IllegalStateException("Access not allowed");
   }
 
   @Override
-  public int getGearUnit() throws IllegalAccessException {
-    throw new IllegalAccessException("Access not allowed");
+  public int getGearUnit() throws IllegalStateException {
+    throw new IllegalStateException("Access not allowed");
   }
 
   public boolean getFlag() {

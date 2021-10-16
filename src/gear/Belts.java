@@ -11,7 +11,7 @@ import java.util.Map;
  * Creates the Belts gear and Helps in getting how much
  * it affects a player's ability. It affects player's dexterity and constitution ability.
  */
-public class Belts extends AbstractGear {
+class Belts extends AbstractGear {
 
   GenerateRandomNumber g = new GenerateRandomNumber(4);
   private BeltTypes size;

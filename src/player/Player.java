@@ -1,6 +1,7 @@
 package player;
 
 import gear.Gear;
+import numbergenerator.GenerateRandomNumber;
 import weapon.Weapon;
 import weapon.WeaponTypes;
 
@@ -100,9 +101,9 @@ public interface Player {
 
   /** Get the list of equipped gears.
    * @return the list of gears
-   * @throws IllegalAccessException if getting the list without equipping the gears from bag
+   * @throws IllegalStateException if getting the list without equipping the gears from bag
    */
-  List<Gear> getEquippedGears() throws IllegalAccessException;
+  List<Gear> getEquippedGears() throws IllegalStateException;
 
   /**
    * Randomly pick a weapon from the armory.
@@ -170,4 +171,10 @@ public interface Player {
    * @return list of gears
    * */
   List<String> sortGears();
+
+  /**
+   * Get the object of Generate random number.
+   * @return the object
+   */
+  GenerateRandomNumber getRandObject();
 }

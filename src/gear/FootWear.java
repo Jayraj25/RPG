@@ -19,7 +19,8 @@ class FootWear extends AbstractGear {
   @Override
   public Map<PlayerAbilities, Integer> getAffectOnPlayerAbility() {
     temp.put(PlayerAbilities.DEXTERITY, 4);
-    return temp;
+    Map<PlayerAbilities,Integer> copyTemp = temp;
+    return copyTemp;
   }
 
   @Override

@@ -1,14 +1,14 @@
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import gear.Gear;
 import gear.GearCategory;
 import gear.GearFactory;
 import player.PlayerAbilities;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -64,7 +64,8 @@ public class GearTest {
 
   @Test
   public void testCorrectCreation() {
-    gf.createGears("poison",GearCategory.POTION);
+    assertEquals("Potion created successfully.",
+            gf.createGears("poison",GearCategory.POTION).toString());
   }
 
   @Test
@@ -114,28 +115,28 @@ public class GearTest {
     assertEquals("Footwear",footWear.getGearCategory().toString());
   }
 
-  @Test(expected = IllegalAccessException.class)
-  public void testHeadGearBeltType() throws IllegalAccessException {
+  @Test(expected = IllegalStateException.class)
+  public void testHeadGearBeltType() {
     headGear.getBeltType();
   }
 
-  @Test(expected = IllegalAccessException.class)
-  public void testFootwearBeltType() throws IllegalAccessException {
+  @Test(expected = IllegalStateException.class)
+  public void testFootwearBeltType() {
     footWear.getBeltType();
   }
 
-  @Test(expected = IllegalAccessException.class)
-  public void testPotionBeltType() throws IllegalAccessException {
+  @Test(expected = IllegalStateException.class)
+  public void testPotionBeltType() {
     potion.getBeltType();
   }
 
   @Test
-  public void testBeltType() throws IllegalAccessException {
+  public void testBeltType() {
     assertEquals("Large",belt.getBeltType().toString());
   }
 
   @Test
-  public void getGearUnit() throws IllegalAccessException {
+  public void getGearUnit() {
     assertEquals(4,belt.getGearUnit());
   }
 }

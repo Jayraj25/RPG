@@ -71,7 +71,8 @@ public class BattleModel implements BattleArena {
     List<String> temp1 = new ArrayList<>();
     temp1.add(attacker.getPlayerName());
     temp1.add(defender.getPlayerName());
-    return temp1;
+    List<String> copyTemp1 = temp1;
+    return copyTemp1;
   }
 
   @Override
@@ -107,7 +108,8 @@ public class BattleModel implements BattleArena {
       temp.add(defender.getPlayerName());
     }
     temp.add(String.valueOf(actualDamage));
-    return temp;
+    List<String> copyTemp = temp;
+    return copyTemp;
   }
 
   @Override

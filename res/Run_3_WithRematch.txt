@@ -1,0 +1,222 @@
+Welcome to Kal's Battle arena.
+--------------------------------------
+Tom: {Dexterity=16, Strength=13, Charisma=12, Constitution=13}
+Jerry: {Dexterity=15, Strength=11, Charisma=10, Constitution=14}
+
+Tom:
+[Potion 40, Belt 15(Large), HeadGear 6, Potion 21, Footwear 5, Potion 36, Potion 18, Potion 31, Potion 22, Belt 22(Large), Potion 29, Potion 39, Potion 34, Potion 15, Potion 6, Potion 9, Potion 30, Potion 24, Potion 35, Potion 3]
+Sorted order:
+[HeadGear 6, Potion 3, Potion 6, Potion 9, Potion 15, Potion 18, Potion 21, Potion 22, Potion 24, Potion 29, Potion 30, Potion 31, Potion 34, Potion 35, Potion 36, Potion 39, Potion 40, Belt 15, Belt 22, Footwear 5]
+
+Jerry:
+[Potion 2, Potion 27, HeadGear 7, Potion 17, Potion 41, Potion 10, Belt 12(Large), Potion 19, Belt 20(Large), Potion 8, Potion 20, Footwear 3, Potion 5, Potion 33, Potion 32, Potion 23, Potion 26, Potion 14, Potion 16, Potion 7]
+Sorted order:
+[HeadGear 7, Potion 2, Potion 5, Potion 7, Potion 8, Potion 10, Potion 14, Potion 16, Potion 17, Potion 19, Potion 20, Potion 23, Potion 26, Potion 27, Potion 32, Potion 33, Potion 41, Belt 12, Belt 20, Footwear 3]
+
+After equipping gears, Tom: 
+{Dexterity=28, Strength=61, Charisma=68, Constitution=42}
+
+After equipping gears, Jerry: 
+{Dexterity=27, Strength=95, Charisma=58, Constitution=43}
+===================================
+Tom's Weapon: Bare Hands
+Jerry's Weapon: Two Handed Swords
+===================================
+Initial Health:
+Tom: 199
+Jerry: 223
+
+Battle Starts.
+-----------------------------------
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 68
+Jerry's avoidance ability is: 29
+Tom is the round winner.
+The actual damage is: 20
+Player's health after round 1:
+Tom's health: 199
+Jerry's health: 203
+===================================
+Jerry's turn to attack.
+Tom's turn to defend.
+Jerry's striking power is: 97
+Tom's avoidance ability is: 33
+Jerry is the round winner.
+The actual damage is: 65
+Player's health after round 2:
+Tom's health: 134
+Jerry's health: 203
+===================================
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 68
+Jerry's avoidance ability is: 32
+Tom is the round winner.
+The actual damage is: 23
+Player's health after round 3:
+Tom's health: 134
+Jerry's health: 180
+===================================
+Jerry's turn to attack.
+Tom's turn to defend.
+Jerry's striking power is: 98
+Tom's avoidance ability is: 33
+Jerry is the round winner.
+The actual damage is: 61
+Player's health after round 4:
+Tom's health: 73
+Jerry's health: 180
+===================================
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 65
+Jerry's avoidance ability is: 31
+Tom is the round winner.
+The actual damage is: 19
+Player's health after round 5:
+Tom's health: 73
+Jerry's health: 161
+===================================
+Jerry's turn to attack.
+Tom's turn to defend.
+Jerry's striking power is: 101
+Tom's avoidance ability is: 34
+Jerry is the round winner.
+The actual damage is: 63
+Player's health after round 6:
+Tom's health: 10
+Jerry's health: 161
+===================================
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 65
+Jerry's avoidance ability is: 33
+Tom is the round winner.
+The actual damage is: 20
+Player's health after round 7:
+Tom's health: 10
+Jerry's health: 141
+===================================
+Jerry's turn to attack.
+Tom's turn to defend.
+Jerry's striking power is: 104
+Tom's avoidance ability is: 30
+Jerry is the round winner.
+The actual damage is: 63
+Player's health after round 8:
+Tom's health: -53
+Jerry's health: 141
+===================================
+The game is over after 8 rounds.
+Tom's health: -53
+Jerry's health: 141
+The winner is: Jerry
+Do you want a rematch [Y/N]:
+Y
+Tom: {Dexterity=15, Strength=16, Charisma=15, Constitution=17}
+Jerry: {Dexterity=12, Strength=10, Charisma=13, Constitution=13}
+
+Tom:
+[Potion 32, Belt 8(Large), Footwear 1, Belt 16(Large), Potion 4, HeadGear 7, Potion 13, Potion 2, Potion 3, Potion 41, Potion 34, Potion 9, Potion 10, Potion 28, Potion 1, Potion 6, Potion 15, Potion 29, Potion 38, Potion 26]
+Sorted order:
+[HeadGear 7, Potion 1, Potion 2, Potion 3, Potion 4, Potion 6, Potion 9, Potion 10, Potion 13, Potion 15, Potion 26, Potion 28, Potion 29, Potion 32, Potion 34, Potion 38, Potion 41, Belt 8, Belt 16, Footwear 1]
+
+Jerry:
+[Potion 31, Potion 43, Footwear 2, Belt 22(Large), Potion 25, Belt 18(Large), HeadGear 1, Potion 17, Potion 36, Potion 12, Potion 39, Potion 23, Potion 22, Potion 30, Potion 40, Potion 37, Potion 27, Potion 14, Potion 24, Potion 16]
+Sorted order:
+[HeadGear 1, Potion 12, Potion 14, Potion 16, Potion 17, Potion 22, Potion 23, Potion 24, Potion 25, Potion 27, Potion 30, Potion 31, Potion 36, Potion 37, Potion 39, Potion 40, Potion 43, Belt 18, Belt 22, Footwear 2]
+
+After equipping gears, Tom: 
+{Dexterity=11, Strength=88, Charisma=79, Constitution=46}
+
+After equipping gears, Jerry: 
+{Dexterity=16, Strength=82, Charisma=61, Constitution=42}
+===================================
+Tom's Weapon: Katana
+Jerry's Weapon: Axe
+===================================
+Initial Health:
+Tom: 224
+Jerry: 201
+
+Battle Starts.
+-----------------------------------
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 91
+Jerry's avoidance ability is: 20
+Tom is the round winner.
+The actual damage is: 55
+Player's health after round 1:
+Tom's health: 224
+Jerry's health: 146
+===================================
+Jerry's turn to attack.
+Tom's turn to defend.
+Jerry's striking power is: 91
+Tom's avoidance ability is: 16
+Jerry is the round winner.
+The actual damage is: 44
+Player's health after round 2:
+Tom's health: 180
+Jerry's health: 146
+===================================
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 97
+Jerry's avoidance ability is: 22
+Tom is the round winner.
+The actual damage is: 54
+Player's health after round 3:
+Tom's health: 180
+Jerry's health: 92
+===================================
+Jerry's turn to attack.
+Tom's turn to defend.
+Jerry's striking power is: 89
+Tom's avoidance ability is: 14
+Jerry is the round winner.
+The actual damage is: 46
+Player's health after round 4:
+Tom's health: 134
+Jerry's health: 92
+===================================
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 98
+Jerry's avoidance ability is: 21
+Tom is the round winner.
+The actual damage is: 55
+Player's health after round 5:
+Tom's health: 134
+Jerry's health: 37
+===================================
+Jerry's turn to attack.
+Tom's turn to defend.
+Jerry's striking power is: 85
+Tom's avoidance ability is: 12
+Jerry is the round winner.
+The actual damage is: 44
+Player's health after round 6:
+Tom's health: 90
+Jerry's health: 37
+===================================
+Tom's turn to attack.
+Jerry's turn to defend.
+Tom's striking power is: 92
+Jerry's avoidance ability is: 22
+Tom is the round winner.
+The actual damage is: 58
+Player's health after round 7:
+Tom's health: 90
+Jerry's health: -21
+===================================
+The game is over after 7 rounds.
+Tom's health: 90
+Jerry's health: -21
+The winner is: Tom
+Do you want a rematch [Y/N]:
+N
+
+Process finished with exit code 0

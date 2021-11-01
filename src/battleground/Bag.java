@@ -11,6 +11,35 @@ import java.util.List;
 public interface Bag {
 
   /**
+   * Get the number of head gears to be created.
+   * @return the number
+   */
+  int getNoOfHeadGears();
+
+  /**
+   * Get the number of footwear to be created.
+   * @return the number
+   */
+  int getNoOfFootwear();
+
+  /**
+   * Get the number of belts to be created.
+   * @return the number
+   */
+  int getNoOfBelts();
+
+  /**
+   * Get the number of potions to be created.
+   * @return the number
+   */
+  int getNoOfPotions();
+
+  /**
+   * Creates bag of equipments with the given number of individual gears.
+   */
+  void generateEquipmentSet();
+
+  /**
    * Get the bag of equipments in which 25% of gears decreases at least one ability of player.
    * @return list of gears.
    * */

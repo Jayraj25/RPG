@@ -1,5 +1,3 @@
-import org.junit.Test;
-
 import numbergenerator.GenerateRandomNumber;
 import weapon.Axes;
 import weapon.BareHands;
@@ -11,14 +9,16 @@ import weapon.Weapon;
 import weapon.WeaponFactory;
 import weapon.WeaponTypes;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Tests related to weapons are done here like creation from factory and getting damage.
  */
 public class WeaponTest {
 
-  GenerateRandomNumber g= new GenerateRandomNumber(1);
+  GenerateRandomNumber g = new GenerateRandomNumber(1);
   WeaponFactory wf = new WeaponFactory();
   Weapon w;
   Weapon f = wf.createWeapon(WeaponTypes.FLAIL);
@@ -106,7 +106,7 @@ public class WeaponTest {
 
   @Test
   public void testKatanaDamage() {
-    assertEquals(4,sk.getWeaponDamage(g));
+    assertEquals(8,sk.getWeaponDamage(g));
   }
 
   @Test

@@ -3,13 +3,13 @@ package weapon;
 import numbergenerator.GenerateRandomNumber;
 
 /**
- * Creates Katanas for battle.
+ * Creates Katanas weapon for battle.
  * */
 public class Katanas extends AbstractSword {
 
   @Override
   public int getWeaponDamage(GenerateRandomNumber g) {
-    return g.getRandomNumber(4,6);
+    return g.getRandomNumber(8,12);
   }
 
   @Override

@@ -1,11 +1,3 @@
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import battleground.ArmoryProducer;
 import battleground.BattleArena;
 import battleground.BattleModel;
@@ -14,6 +6,14 @@ import player.Player;
 import player.PlayerGenerator;
 import weapon.Weapon;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+
+import org.junit.rules.ExpectedException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -24,8 +24,8 @@ import static org.junit.Assert.assertTrue;
 public class BattleArenaTest {
 
   GenerateRandomNumber g = new GenerateRandomNumber(3);
-  Player p1 = new PlayerGenerator("Jon Snow",g);
-  Player p2 = new PlayerGenerator("Danaerys",g);
+  Player p1 = new PlayerGenerator(new PlayerGenerator("Jon Snow",g));
+  Player p2 = new PlayerGenerator(new PlayerGenerator("Danaerys",g));
   BattleArena arena = new BattleModel(new BattleModel(p1,p2));
 
   @Before
@@ -69,8 +69,8 @@ public class BattleArenaTest {
     arena.equipGears(p2);
     p1.makeChangesInAbilities();
     p2.makeChangesInAbilities();
-    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
-            (4,6,4, 7,5));
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+            4,6,4, 7,5));
     List<Weapon> armory = a.generateArmory();
     p1.equipWeapon(armory);
     p2.equipWeapon(armory);
@@ -78,7 +78,22 @@ public class BattleArenaTest {
       arena.makeMove();
       arena.getTurn();
     }
-    assertEquals("Jon Snow",arena.getWinner().getPlayerName());
+    assertEquals("Danaerys",arena.getWinner().getPlayerName());
+  }
+
+  @Test
+  public void testActualDamage() {
+    arena.equipGears(p1);
+    arena.equipGears(p2);
+    p1.makeChangesInAbilities();
+    p2.makeChangesInAbilities();
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+            4,6,4, 7,5));
+    List<Weapon> armory = a.generateArmory();
+    p1.equipWeapon(armory);
+    p2.equipWeapon(armory);
+    List<String> expected = arena.makeMove();
+    assertEquals("39",expected.get(5));
   }
 
   @Test
@@ -87,8 +102,8 @@ public class BattleArenaTest {
     arena.equipGears(p2);
     p1.makeChangesInAbilities();
     p2.makeChangesInAbilities();
-    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
-            (4,6,4, 7,5));
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+            4,6,4, 7,5));
     List<Weapon> armory = a.generateArmory();
     p1.equipWeapon(armory);
     p2.equipWeapon(armory);
@@ -96,7 +111,8 @@ public class BattleArenaTest {
     List<String> actual = arena.getTurn();
     List<String> expected = new ArrayList<>() {
       {
-        add("Danaerys");add("Jon Snow");
+        add("Jon Snow");
+        add("Danaerys");
       }
     };
     assertEquals(expected,actual);
@@ -108,8 +124,8 @@ public class BattleArenaTest {
     arena.equipGears(p2);
     p1.makeChangesInAbilities();
     p2.makeChangesInAbilities();
-    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
-            (4,6,4, 7,5));
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+            4,6,4, 7,5));
     List<Weapon> armory = a.generateArmory();
     p1.equipWeapon(armory);
     p2.equipWeapon(armory);
@@ -125,8 +141,8 @@ public class BattleArenaTest {
     arena.equipGears(p2);
     p1.makeChangesInAbilities();
     p2.makeChangesInAbilities();
-    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
-            (4,6,4, 7,5));
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+            4,6,4, 7,5));
     List<Weapon> armory = a.generateArmory();
     p1.equipWeapon(armory);
     p2.equipWeapon(armory);
@@ -143,16 +159,20 @@ public class BattleArenaTest {
     arena.equipGears(p2);
     p1.makeChangesInAbilities();
     p2.makeChangesInAbilities();
-    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
-            (4,6,4, 7,5));
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+            4,6,4, 7,5));
     List<Weapon> armory = a.generateArmory();
     p1.equipWeapon(armory);
     p2.equipWeapon(armory);
     List<String> actual = arena.makeMove();
     List<String> expected = new ArrayList<>() {
       {
-        add("Jon Snow");add("Danaerys");add("78");
-        add("25");add("Jon Snow");add("32");
+        add("Danaerys");
+        add("Jon Snow");
+        add("81");
+        add("26");
+        add("Danaerys");
+        add("39");
       }
     };
     assertEquals(expected,actual);
@@ -164,8 +184,8 @@ public class BattleArenaTest {
     arena.equipGears(p2);
     p1.makeChangesInAbilities();
     p2.makeChangesInAbilities();
-    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
-            (4,6,4, 7,5));
+    ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+            4,6,4, 7,5));
     List<Weapon> armory = a.generateArmory();
     p1.equipWeapon(armory);
     p2.equipWeapon(armory);

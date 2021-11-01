@@ -1,14 +1,14 @@
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import gear.Gear;
 import gear.GearCategory;
 import gear.GearFactory;
 import player.PlayerAbilities;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -64,7 +64,8 @@ public class GearTest {
 
   @Test
   public void testCorrectCreation() {
-    gf.createGears("poison",GearCategory.POTION);
+    assertEquals("Potion created successfully.",
+            gf.createGears("poison",GearCategory.POTION).toString());
   }
 
   @Test

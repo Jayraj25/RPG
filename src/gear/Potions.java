@@ -31,13 +31,15 @@ class Potions extends AbstractGear {
     temp.put(PlayerAbilities.CHARISMA, g.getRandomNumber(2,6));
     temp.put(PlayerAbilities.STRENGTH, g.getRandomNumber(0,8));
     setFlag(true);
-    return temp;
+    Map<PlayerAbilities,Integer> copyTemp = temp;
+    return copyTemp;
   }
 
   @Override
   public Map<PlayerAbilities, Integer> getAbilityMap() {
     if (getFlag()) {
-      return temp;
+      Map<PlayerAbilities,Integer> copyTemp = temp;
+      return copyTemp;
     }
     else {
       Map<PlayerAbilities, Integer> x = new HashMap<>();

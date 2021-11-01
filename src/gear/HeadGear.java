@@ -19,7 +19,8 @@ class HeadGear extends AbstractGear {
   @Override
   public Map<PlayerAbilities, Integer> getAffectOnPlayerAbility() {
     temp.put(PlayerAbilities.CONSTITUTION, 5);
-    return temp;
+    Map<PlayerAbilities,Integer> copyTemp = temp;
+    return copyTemp;
   }
 
   @Override

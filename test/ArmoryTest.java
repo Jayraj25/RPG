@@ -1,15 +1,17 @@
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import battleground.Armory;
 import battleground.ArmoryProducer;
 import weapon.Weapon;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Rule;
+import org.junit.Test;
+
+import org.junit.rules.ExpectedException;
+
 import static org.junit.Assert.assertEquals;
+
 
 /**
  * Test the functions of armory like armory creation and minimum valid weapons allowed, etc.
@@ -73,9 +75,16 @@ public class ArmoryTest {
     }
     List<String> expected = new ArrayList<>() {
       {
-        add("Katana");add("Katana");add("Bare Hands");add("Bare Hands");add("Bare Hands");
-        add("Broad Sword");add("Broad Sword");add("Two Handed Swords");
-        add("Axe");add("Flail");
+        add("Katana");
+        add("Katana");
+        add("Bare Hands");
+        add("Bare Hands");
+        add("Bare Hands");
+        add("Broad Sword");
+        add("Broad Sword");
+        add("Two Handed Swords");
+        add("Axe");
+        add("Flail");
       }
     };
     assertEquals(expected,actual);

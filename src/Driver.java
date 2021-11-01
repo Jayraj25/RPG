@@ -27,10 +27,11 @@ public class Driver {
     System.out.println("Welcome to Kal's Battle arena.");
     System.out.println("--------------------------------------");
     while (rematch) {
-      Player p1 = new PlayerGenerator("Tom",r);
-      Player p2 = new PlayerGenerator("Jerry",r);
+      Player p1 = new PlayerGenerator(new PlayerGenerator("Tom",r));
+      Player p2 = new PlayerGenerator(new PlayerGenerator("Jerry",r));
 
       p1.setProperties();
+
       p2.setProperties();
       System.out.println(p1.getPlayerName() + ": " + p1.getAbilitiesMap());
       System.out.println(p2.getPlayerName() + ": " + p2.getAbilitiesMap());
@@ -74,8 +75,8 @@ public class Driver {
       System.out.println("\nAfter equipping gears, " + p2.getPlayerName() + ": \n"
               + p2.getAbilitiesMap());
 
-      ArmoryProducer a = new ArmoryProducer(new ArmoryProducer
-              (4,6,4, 7,5));
+      ArmoryProducer a = new ArmoryProducer(new ArmoryProducer(
+              4,6,4, 7,5));
       List<Weapon> armory = a.generateArmory();
       p1.equipWeapon(armory);
       p2.equipWeapon(armory);

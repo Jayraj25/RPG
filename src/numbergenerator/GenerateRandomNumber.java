@@ -2,8 +2,6 @@ package numbergenerator;
 
 import java.util.Random;
 
-import gear.Gear;
-
 /**
  * Class that helps in generating random number which will be used in testing as well.
  * */

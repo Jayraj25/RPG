@@ -18,7 +18,7 @@ public class PlayerModel {
 
   BagOfEquipments bag = new BagOfEquipments(7,7,
           23,43);
-  GenerateRandomNumber g = new GenerateRandomNumber(7);
+  GenerateRandomNumber g = new GenerateRandomNumber(4); //seed 7, seed 4 for tests
   private final List<Gear> gearList = bag.getEquipments();
 
 

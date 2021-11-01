@@ -116,7 +116,6 @@ public class BagOfEquipments implements Bag {
           w = temp.getAffectOnPlayerAbility();
           int dexterity = w.get(PlayerAbilities.DEXTERITY) * -1;
           w.put(PlayerAbilities.DEXTERITY,dexterity);
-//          System.out.println("Inside B " + w);
           count++;
         }
       }
@@ -128,22 +127,19 @@ public class BagOfEquipments implements Bag {
           if (w.get(f) != 0) {
             int affect = w.get(f) * -1;
             w.put(f,affect);
-//            System.out.println("Inside P " + temp.getName() + w);
             count++;
           }
         }
       }
     }
-//    for (Gear e: equipments) {
-//      System.out.println("Hii" + e.getAbilityMap());
-//    }
   }
 
   @Override
   public List<Gear> getEquipments() {
     generateEquipmentSet();
     tweakAbilities();
-    return equipments;
+    List<Gear> temp = equipments;
+    return temp;
   }
 
   @Override

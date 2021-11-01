@@ -46,6 +46,15 @@ public class PlayerGenerator implements Player {
     this.weaponEquippedType = WeaponTypes.BARE_HANDS;
   }
 
+  /**
+   * The copy constructor of original player to avoid mutation.
+   * @param player the player
+   */
+  public PlayerGenerator(Player player) {
+    this.playerName = player.getPlayerName();
+    this.g = player.getRandObject();
+  }
+
   @Override
   public void setProperties() {
     for (PlayerAbilities a: PlayerAbilities.values()) {
@@ -267,5 +276,10 @@ public class PlayerGenerator implements Player {
       gearNamesSortedOrder.add(s.getName());
     }
     return gearNamesSortedOrder;
+  }
+
+  @Override
+  public GenerateRandomNumber getRandObject() {
+    return this.g;
   }
 }

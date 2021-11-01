@@ -37,18 +37,22 @@ abstract class AbstractGear implements Gear {
 
   @Override
   public BeltTypes getBeltType() throws IllegalStateException {
+    //throws an exception if class other than Belt class as only belt has Belt type.
     throw new IllegalStateException("Access not allowed");
   }
 
   @Override
   public int getGearUnit() throws IllegalStateException {
+    //throws an exception if class other than potion and belt class.
     throw new IllegalStateException("Access not allowed");
   }
 
+  @Override
   public boolean getFlag() {
     return flag;
   }
 
+  @Override
   public void setFlag(boolean flag) {
     this.flag = flag;
   }

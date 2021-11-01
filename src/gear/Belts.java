@@ -49,13 +49,15 @@ class Belts extends AbstractGear {
     temp.put(PlayerAbilities.CONSTITUTION, 3);
     temp.put(PlayerAbilities.DEXTERITY, 1);
     setFlag(true);
-    return temp;
+    Map<PlayerAbilities,Integer> copyTemp = temp;
+    return copyTemp;
   }
 
   @Override
   public Map<PlayerAbilities, Integer> getAbilityMap() {
     if (getFlag()) {
-      return temp;
+      Map<PlayerAbilities,Integer> copyTemp = temp;
+      return copyTemp;
     }
     else {
       Map<PlayerAbilities, Integer> x = new HashMap<>();

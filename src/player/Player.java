@@ -1,6 +1,7 @@
 package player;
 
 import gear.Gear;
+import numbergenerator.GenerateRandomNumber;
 import weapon.Weapon;
 import weapon.WeaponTypes;
 
@@ -170,4 +171,10 @@ public interface Player {
    * @return list of gears
    * */
   List<String> sortGears();
+
+  /**
+   * Get the object of Generate random number.
+   * @return the object
+   */
+  GenerateRandomNumber getRandObject();
 }

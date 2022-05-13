@@ -1,4 +1,4 @@
-## Project 2 - Role Playing Game
+## Role Playing Game
 
 ## Overview
 The project is about creating a Role-playing game which is based on turn by turn. In this game, Players
